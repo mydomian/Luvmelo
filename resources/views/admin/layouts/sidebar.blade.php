@@ -11,7 +11,7 @@
       </div>
 
 
-          <a href="index.html" class="link-text-color-nav active" aria-current="true">
+          <a href="{{ route('admin.dashboard') }}" class="link-text-color-nav active" aria-current="true">
             <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
               <i class="fas fa-tachometer-alt fa-fw me-3 m-1"></i>
               <div class="m-1">Home</div>
@@ -19,14 +19,14 @@
           </a>
 
 
-          <a href="#" class=" link-text-color-nav">
+          <a href="{{ route('admin.dashboard') }}" class=" link-text-color-nav">
             <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
               <i class="fas fa-chart-area fa-fw me-3 m-1"></i>
               <div class="m-1">Overview</div>
             </div>
           </a>
 
-          <a href="employee_list.html" class="link-text-color-nav">
+          <a href="{{ route('employees.index') }}" class="link-text-color-nav">
             <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
               <i class="fas fa-lock fa-fw me-3 m-1"></i>
               <div class="m-1">Employees</div>
