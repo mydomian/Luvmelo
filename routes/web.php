@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminCalanderController;
+use App\Http\Controllers\Admin\AdminClientController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminDistanceFinderController;
+use App\Http\Controllers\Admin\AdminEmployeeController;
+use App\Http\Controllers\Admin\AdminMessageController;
 use App\Http\Controllers\Employee\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +29,11 @@ Route::group(['middleware' => 'admin'], function () {
         Route::get('admin-dashboard', 'dashboard')->name('admin.dashboard');
         Route::get('admin-logout','logout')->name('admin.logout');
     });
-    Route::resource('employees', EmployeeController::class);
+    Route::resource('admin-employees', AdminEmployeeController::class);
+    Route::resource('admin-clients', AdminClientController::class);
+    Route::resource('admin-distances', AdminDistanceFinderController::class);
+    Route::resource('admin-calanders', AdminCalanderController::class);
+    Route::resource('admin-messages', AdminMessageController::class);
 });
 
 Route::match(['get','post'],'/employee/login',[EmployeeController::class,'login'])->name('employee.login');

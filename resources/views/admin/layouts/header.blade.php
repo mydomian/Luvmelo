@@ -20,7 +20,7 @@
             <!-- Avatar -->
             <div class=" mr-4 ml-3">
                 <img
-                src="assets/image/melo_temp_logo.png"
+                src="{{ asset('/storage/admin/assets/image/melo_temp_logo.png') }}"
                 class="rounded-circle"
                 height="35"
                 alt="Black and White Portrait of a Man"
