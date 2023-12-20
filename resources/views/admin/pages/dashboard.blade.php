@@ -1,4 +1,7 @@
 @extends('admin.layouts.master')
+@push('admin-css')
+<link rel="stylesheet" href="{{ asset('/storage/admin/css/style.css') }}">
+@endpush
 @section('admin-content')
     <div class="custom-name-color col-md-12 col-sm-12 pt-3 overview-text">
         Overview

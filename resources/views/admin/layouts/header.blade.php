@@ -19,6 +19,7 @@
 
             <!-- Avatar -->
             <div class=" mr-4 ml-3">
+
                 <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" role="button"
                     data-mdb-toggle="dropdown" aria-expanded="false">
                     <img src="{{ auth()->user()->profile_photo_path ? asset('storage/admin/assets/image/melo_temp_logo.png') : auth()->user()->profile_photo_url }}"
@@ -32,7 +33,7 @@
                         <a href="{{route('admin.logout')}}" class="dropdown-item text-danger text-center" ><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
                     </li>
                 </div>
-               
+
 
             </div>
         </div>
