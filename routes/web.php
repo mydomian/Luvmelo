@@ -22,7 +22,9 @@ Route::match(['get','post'],'/admin/login',[AdminController::class,'login'])->na
 Route::group(['middleware' => 'admin'], function () {
     Route::controller(AdminController::class)->group(function () {
         Route::get('admin-dashboard', 'dashboard')->name('admin.dashboard');
+        Route::get('admin-logout','logout')->name('admin.logout');
     });
+    Route::resource('employees', EmployeeController::class);
 });
 
 Route::match(['get','post'],'/employee/login',[EmployeeController::class,'login'])->name('employee.login');
