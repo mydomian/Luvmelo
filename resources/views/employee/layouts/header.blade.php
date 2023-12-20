@@ -24,7 +24,7 @@
                     <a class="dropdown-item text-dark text-center" href=""><i class="fa-solid fa-gear"></i> Settings</a>
                 </li>
                 <li>
-                    <a href="#" class="dropdown-item text-danger text-center" ><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
+                    <a href="{{route('employee.logout')}}" class="dropdown-item text-danger text-center" ><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
                 </li>
             </div>
             </div>

@@ -40,5 +40,6 @@ Route::match(['get','post'],'/employee/login',[EmployeeController::class,'login'
 Route::group(['middleware' => 'employee'], function () {
     Route::controller(EmployeeController::class)->group(function () {
         Route::get('employee-dashboard', 'dashboard')->name('employee.dashboard');
+        Route::get('employee-logout','logout')->name('employee.logout');
     });
 });
