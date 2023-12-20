@@ -9,13 +9,24 @@
         <div class="d-flex align-items-center">
             <div class="custom-name-color">Hello! MeloSpeech</div>
             <div class=" mr-5 ml-3">
+               <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" role="button"
+               data-mdb-toggle="dropdown" aria-expanded="false">
                 <img
-                src="assets/image/melo_temp_logo.png"
+                src="{{auth()->user()->profile_photo_path ? asset('storage/employee/assets/image/melo_temp_logo.png') : auth()->user()->profile_photo_url}}"
                 class="rounded-circle"
                 height="35"
                 alt="Black and White Portrait of a Man"
                 loading="lazy"
                 />
+               </a>
+               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                <li>
+                    <a class="dropdown-item text-dark text-center" href=""><i class="fa-solid fa-gear"></i> Settings</a>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-item text-danger text-center" ><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
+                </li>
+            </div>
             </div>
         </div>
     </div>
