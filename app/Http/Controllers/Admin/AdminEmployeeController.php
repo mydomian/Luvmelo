@@ -20,7 +20,7 @@ class AdminEmployeeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.employee.create');
     }
 
     /**

@@ -3,11 +3,11 @@
 <div class="custom-name-color pt-3 overview-text" >
     Employee List
   </div>
-  <div class="row home-main-section pb-3">
+  <div class="row home-main-section pb-5">
     <div class="col-md-7 home-first-section">
       <div class="row home-first-sectio-row bgw-br15 ">
         <div class="col-md-2  media-quary-width-20">
-          <img src="assets/image/VNU_M472_02.png" class="home-main-section-img " alt="">
+          <img src="{{ asset('/storage/admin/assets/image/VNU_M472_02.png') }}" class="home-main-section-img " alt="">
         </div>
         <div class="col-md-6 py-2 media-quary-width-50">
           <div class="custom-name-color">Hello Melospeech!</div>
@@ -15,7 +15,7 @@
           </p>
         </div>
         <div class="col-md-4 media-quary-width-30">
-          <img src="assets/image/Clip.png" class="home-main-section-img" alt="">
+          <img src="{{ asset('/storage/admin/assets/image/Clip.png') }}" class="home-main-section-img" alt="">
         </div>
       </div>
     </div>
@@ -23,7 +23,7 @@
 
       <div class="row employee-middle-section p-4">
         <div class="text-center">
-          <div class="search-section"><img class="mr-4" src="assets/image/icon/search copy 2.png" alt="">
+          <div class="search-section"><img class="mr-4" src="{{ asset('/storage/admin/assets/image/icon/search copy 2.png') }}" alt="">
             Search employee list
           </div>
         </div>
@@ -31,22 +31,22 @@
         <div class="row">
           <div class="col-md-2"></div>
           <div class="text-center mt-2 col-md-2 media-quary-width-50">
-            <div class="select-section-employee"><img class="mr-2 " src="assets/image/icon/Vector-cross.png" alt="">
+            <div class="select-section-employee"><img class="mr-2 " src="{{ asset('/storage/admin/assets/image/icon/Vector-cross.png') }}" alt="">
               James
             </div>
           </div>
           <div class="text-center mt-2 col-md-2 media-quary-width-50">
-            <div class="select-section-employee"><img class="mr-2 " src="assets/image/icon/Vector-cross.png" alt="">
+            <div class="select-section-employee"><img class="mr-2 " src="{{ asset('/storage/admin/assets/image/icon/Vector-cross.png') }}" alt="">
               Wiseman
             </div>
           </div>
           <div class="text-center mt-2 col-md-2 media-quary-width-50">
-            <div class="select-section-employee"><img class="mr-2 " src="assets/image/icon/Vector-cross.png" alt="">
+            <div class="select-section-employee"><img class="mr-2 " src="{{ asset('/storage/admin/assets/image/icon/Vector-cross.png') }}" alt="">
               Telmecula
             </div>
           </div>
           <div class="text-center mt-2 col-md-2 media-quary-width-50">
-            <div class="select-section-employee"><img class="mr-2 " src="assets/image/icon/Vector-cross.png" alt="">
+            <div class="select-section-employee"><img class="mr-2 " src="{{ asset('/storage/admin/assets/image/icon/Vector-cross.png') }}" alt="">
               90133
             </div>
           </div>
@@ -54,7 +54,10 @@
 
         </div>
 
-        <div class="col-md-11 mt-3 media-quary-width-88">Employee List (12)</div>
+        <div class="col-md-11 mt-3 media-quary-width-88">Employee List (12)
+            <a href="{{ route('admin-employees.create') }}" class="btn btn-sm btn-info">Add Employee</a>
+        </div>
+
         <div class="col-md-1  mt-3 dropdown media-quary-width-5">
             <!-- Avatar -->
             <a
@@ -65,7 +68,7 @@
                 aria-expanded="false"
             >
                 <img
-                src="assets/image/Nav.png"
+                src="{{ asset('/storage/admin/assets/image/Nav.png') }}"
 
                 alt="Black and White Portrait of a Man"
                 loading="lazy"
@@ -83,7 +86,7 @@
                 </li>
                 <li>
                 <a class="dropdown-item" href="#">
-                  <span><img src="assets/image/Component_icon_ic_Ch.png" alt=""></span> <span class="text-white pl-3">Slots</span></a>
+                  <span><img src="{{ asset('/storage/admin/assets/image/Component_icon_ic_Ch.png') }}" alt=""></span> <span class="text-white pl-3">Slots</span></a>
                 </li>
                 <li>
                 <a class="dropdown-item text-white pl-5" href="#">New to Old</a>

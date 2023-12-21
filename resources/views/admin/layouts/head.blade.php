@@ -11,6 +11,5 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet"/>
 
 <link rel="stylesheet" href="{{ asset('/storage/admin/assets/main.css') }}">
-
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 @stack('admin-css')
