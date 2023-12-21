@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('weeks', function (Blueprint $table) {
+        Schema::create('availity_employees', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('employee_id');
             $table->string('day');
-            $table->enum('status',['active','inactive'])->default('active');
+            $table->time('start_time');
+            $table->time('out_time');
             $table->timestamps();
+            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
         });
     }
 
@@ -24,6 +27,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('weeks');
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('availity_employees');
+        Schema::enableForeignKeyConstraints();
     }
 };
