@@ -1,4 +1,5 @@
 @extends('admin.layouts.master')
+@section('home','active')
 @push('admin-css')
 <link rel="stylesheet" href="{{ asset('/storage/admin/css/style.css') }}">
 @endpush
@@ -122,7 +123,7 @@
 
                 <div class="col-md-1 dropleft media-quary-width-5" id="">
                     <!-- Avatar -->
-                    <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" role="button"
+                    <a class="d-flex align-items-center hidden-arrow" href="#" role="button"
                         data-mdb-toggle="dropdown" aria-expanded="false">
                         <img src="{{ asset('storage/admin/assets/image/Nav.png') }}"
                             alt="Black and White Portrait of a Man" loading="lazy" />

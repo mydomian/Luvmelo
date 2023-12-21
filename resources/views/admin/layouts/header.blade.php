@@ -27,7 +27,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                     <li>
-                        <a class="dropdown-item text-dark text-center" href=""><i class="fa-solid fa-gear"></i> Settings</a>
+                        <a href="{{route('admin-settings.index')}}" class="dropdown-item text-dark text-center"><i class="fa-solid fa-gear"></i> Settings</a>
                     </li>
                     <li>
                         <a href="{{route('admin.logout')}}" class="dropdown-item text-danger text-center" ><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
