@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Service;
 use App\Models\Settings;
+use App\Models\Week;
 use Illuminate\Http\Request;
 use App\Services\Services;
 
@@ -20,7 +22,9 @@ class AdminSettingController extends Controller
     public function index()
     {   
         $settings = Settings::first();
-        return view('admin.pages.settings.index', compact('settings'));
+        $weekDays = Week::select('id','day','short_form', 'status')->get();
+        $services = Service::latest()->get();
+        return view('admin.pages.settings.index', compact('settings', 'weekDays','services'));
     }
 
     /**
@@ -102,5 +106,13 @@ class AdminSettingController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+    public function status(Request $request)
+    {
+        $day = Week::findOrFail($request->id);
+        $day->update([
+            'status' => $request->status
+        ]);
+        return back()->withMessage('Status Updated');
     }
 }

@@ -128,114 +128,115 @@
                                             </div>
                                         </div>
                                         <div class="form-row">
-                                            <button class="right-section-button">Update Info</button>
+                                            <button type="submit" class="right-section-button">Update Info</button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade " id="profile" role="tabpanel" aria-labelledby="profile-tab">
                             <div class="row">
                                 <div class="col-md-12 ">
-                                    <p class="mb-0" style="color: #8F00FF">Week Day List </p>
+                                    <p class="mb-0" style="color: #8F00FF">Week Day List ({{$weekDays->count()}})</p>
                                     <table class="table table-borderless align-items-center mt-3">
                                         <thead class="table-thead-color">
                                             <tr>
-                                                <th scope="col">Name </th>
-                                                <th scope="col">Preferred Drag</th>
-                                                <th scope="col">Slots</th>
-                                                <th scope="col">Address</th>
-                                                <th scope="col">Phone</th>
-                                                <th scope="col">Email</th>
-                                                <th scope="col">Client List</th>
+                                                <th scope="col">Sl. </th>
+                                                <th scope="col">Day</th>
+                                                <th scope="col">Short Form</th>
+                                                <th scope="col" class="d-flex justify-content-center">Status</th>
                                             </tr>
                                         </thead>
                                         <tbody class="">
+                                            @forelse ($weekDays as $day)
                                             <tr class="table-tr-border">
-                                                <td class="custom-paragraph-color">J. Zavala</td>
-                                                <td class="custom-paragraph-color">M, T, F</td>
-                                                <td class="custom-number-color">5</td>
-                                                <td class="custom-paragraph-color">22705 Belaire Ln. Riverside, CA 92550
-                                                </td>
-                                                <td class="text-primary">---</td>
-                                                <td class="text-primary">---</td>
-                                                <td class="custom-paragraph-color">
-                                                    <button class="request-button ">Request</button>
+                                                <td class="custom-paragraph-color">{{$loop->iteration}}</td>
+                                                <td class="custom-paragraph-color">{{$day->day}}</td>
+                                                <td class="custom-paragraph-color">{{$day->short_form}}</td>
+                                                <td class="custom-paragraph-color d-flex justify-content-center">
+                                                    @if($day->status == 'active')
+                                                    <a href="#" class="btn btn-primary rounded-pill text-white disabled ">Active</a>
+                                                    <a href="{{route('week.status.update',['id' => $day->id,'status' => 'inactive'])}}" class="mx-1 btn btn-warning rounded-pill text-white">Inactive</a>
+                                                    @else
+                                                    <a href="{{route('week.status.update',['id' => $day->id,'status' => 'active'])}}" class="btn btn-primary rounded-pill text-white ">Active</a>
+                                                    <a href="#" class="mx-1 btn btn-warning rounded-pill text-white disabled ">Inactive</a>
+                                                    @endif
                                                 </td>
                                             </tr>
+                                            @empty
                                             <tr class="table-tr-border">
-                                                <td class="custom-paragraph-color">J. Zavala</td>
-                                                <td class="custom-paragraph-color">M, T, F</td>
-                                                <td class="custom-number-color">5</td>
-                                                <td class="custom-paragraph-color">22705 Belaire Ln. Riverside, CA 92550
-                                                </td>
-                                                <td class="text-primary">---</td>
-                                                <td class="text-primary">jtsanders@gmail.com
-                                                </td>
-                                                <td class="custom-paragraph-color">
-                                                    <button class="request-button ">Request</button>
-                                                </td>
+                                                <td>Nothing Found</td>
                                             </tr>
-                                            <tr class="table-tr-border">
-                                                <td class="custom-paragraph-color">J. Zavala</td>
-                                                <td class="custom-paragraph-color">M, T, F</td>
-                                                <td class="custom-number-color">5</td>
-                                                <td class="custom-paragraph-color">22705 Belaire Ln. Riverside, CA 92550
-                                                </td>
-                                                <td class="text-primary">---</td>
-                                                <td class="text-primary">---
-                                                </td>
-                                                <td class="custom-paragraph-color">
-                                                    <button class="request-button-disable ">Request</button>
-                                                </td>
-                                            </tr>
-                                            <tr class="table-tr-border">
-                                                <td class="custom-paragraph-color">J. Zavala</td>
-                                                <td class="custom-paragraph-color">M, T, F</td>
-                                                <td class="custom-number-color">5</td>
-                                                <td class="custom-paragraph-color">22705 Belaire Ln. Riverside, CA 92550
-                                                </td>
-                                                <td class="text-primary">(951) 555- 0133
-                                                </td>
-                                                <td class="text-primary">---
-                                                </td>
-                                                <td class="custom-paragraph-color">
-                                                    <button class="request-button-disable ">Request</button>
-                                                </td>
-                                            </tr>
-                                            <tr class="table-tr-border">
-                                                <td class="custom-paragraph-color">J. Zavala</td>
-                                                <td class="custom-paragraph-color">M, T, F</td>
-                                                <td class="custom-number-color">5</td>
-                                                <td class="custom-paragraph-color">22705 Belaire Ln. Riverside, CA 92550
-                                                </td>
-                                                <td class="text-primary">---</td>
-                                                <td class="text-primary">---
-                                                </td>
-                                                <td class="custom-paragraph-color">
-                                                    <button class="request-button-disable ">Request</button>
-                                                </td>
-                                            </tr>
-                                            <tr class="table-tr-border">
-                                                <td class="custom-paragraph-color">J. Zavala</td>
-                                                <td class="custom-paragraph-color">M, T, F</td>
-                                                <td class="custom-number-color">5</td>
-                                                <td class="custom-paragraph-color">22705 Belaire Ln. Riverside, CA 92550
-                                                </td>
-                                                <td class="text-primary">---</td>
-                                                <td class="text-primary">---
-                                                </td>
-                                                <td class="custom-paragraph-color">
-                                                    <button class="request-button-disable ">Request</button>
-                                                </td>
-                                            </tr>
-
+                                            @endforelse
+                                            
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">..f.
+                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                            <div class="row">
+                                <div class="col-md-12 ">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="mb-0" style="color: #8F00FF">Service List ({{$services->count()}})</p>
+                                        <a data-toggle="collapse" href="#addService" role="button" aria-expanded="false" aria-controls="collapseExample" class="btn btn-primary rounded-pill text-white"><i class="fa-solid fa-plus"></i> Add Service</a>
+                                    </div>
+                                    <div class="collapse mt-3" id="addService">
+                                        <div class="card card-body">
+                                         <div class="col-md-12 p-0">
+                                                    <p style="color: #8F00FF">Add a Service</p>
+                                            </div>
+                                          <form action="{{route('admin-services.store')}}" method="post">
+                                            @csrf
+                                            <div class="form-row mb-3">        
+                                                <div class="col-md-10">
+                                                  
+                                                    <input type="text" name="service_name" value="{{old('service_name')}}"
+                                                        class="form-control  rounded-pill border-primary" placeholder="Service Name..." required>
+                                                </div>           
+                                                <div class="col-md-2">
+                                                    {{-- <button type="submit" class="right-section-button">Submit</button> --}}
+                                                    <button type="submit" class="btn rounded-pill w-100 text-white" style="background-color: #8F00FF">Submit</button>
+                                                </div>
+                                            </div>
+                                          </form>
+                                        </div>
+                                      </div>
+                                    <table class="table table-borderless align-items-center mt-3">
+                                        <thead class="table-thead-color">
+                                            <tr>
+                                                <th scope="col">Sl. </th>
+                                                <th scope="col">Service Name</th>
+                                                <th scope="col">Created At</th>
+                                                <th scope="col" class="d-flex justify-content-center">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="">
+                                            @forelse ($services as $service)
+                                            <tr class="table-tr-border">
+                                                <td class="custom-paragraph-color">{{$loop->iteration}}</td>
+                                                <td class="custom-paragraph-color">{{$service->service_name}}</td>
+                                                <td class="custom-paragraph-color">{{$service->created_at}}</td>
+                                                <td class="custom-paragraph-color d-flex justify-content-center">
+                                                    @if($service->status == 'active')
+                                                    <a href="#" class="btn btn-primary rounded-pill text-white disabled ">Active</a>
+                                                    <a href="{{route('service.status.update',['id' => $service->id,'status' => 'inactive'])}}" class="mx-1 btn btn-warning rounded-pill text-white">Inactive</a>
+                                                    @else
+                                                    <a href="{{route('service.status.update',['id' => $service->id,'status' => 'active'])}}" class="btn btn-primary rounded-pill text-white ">Active</a>
+                                                    <a href="#" class="mx-1 btn btn-warning rounded-pill text-white disabled ">Inactive</a>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            @empty
+                                            <tr class="table-tr-border">
+                                                <td>Nothing Found</td>
+                                            </tr>
+                                            @endforelse
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
