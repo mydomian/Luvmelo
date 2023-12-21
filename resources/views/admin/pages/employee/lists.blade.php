@@ -1,4 +1,5 @@
 @extends('admin.layouts.master')
+@section('employees','active')
 @section('admin-content')
 <div class="custom-name-color pt-3 overview-text" >
     Employee List

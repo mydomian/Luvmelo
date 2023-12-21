@@ -1,4 +1,5 @@
 @extends('admin.layouts.master')
+@section('calender','active')
 @push('admin-css')
 <link rel="stylesheet" href="{{ asset('/storage/admin/css/style.css') }}">
 @endpush

@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminDistanceFinderController;
 use App\Http\Controllers\Admin\AdminEmployeeController;
 use App\Http\Controllers\Admin\AdminMessageController;
+use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Employee\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('admin-distances', AdminDistanceFinderController::class);
     Route::resource('admin-calanders', AdminCalanderController::class);
     Route::resource('admin-messages', AdminMessageController::class);
+    Route::resource('admin-settings', AdminSettingController::class);
 });
 
 Route::match(['get','post'],'/employee/login',[EmployeeController::class,'login'])->name('employee.login');

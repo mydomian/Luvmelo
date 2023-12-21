@@ -49,5 +49,16 @@
   		toastr.warning("{{ session('warning') }}");
   @endif
 
+  @if (Session::has('errors'))
+    @foreach ($errors->all() as $error)
+    toastr.options =
+    {
+      "closeButton" : true,
+      "progressBar" : true
+    }
+  		toastr.error("{{ $error }}");
+    @endforeach
+  @endif
+
 </script>
 @stack('admin-scripts')
