@@ -22,69 +22,41 @@
             <form action="{{ route('admin-employees.store') }}" method="post">
                 @csrf
                 <div class="card-body">
-                    <div class="row">
-                        <div class="mt-3 text-dark">General</div>
-                        <div class="col-md-8 row employee-details-input">
+                    <div class="row d-flex justify-content-center">
+                        <div class="mt-3 text-dark text-center">General</div>
+                        <div class="col-md-8 row employee-details-input mt-2">
                             <div class="col-md-4 my-2">Name
-                                <div><input type="text" name="name" placeholder="Name"></div>
+                                <div><input type="text" name="name" placeholder="Name" required></div>
                             </div>
                             <div class="col-md-4 my-2">Phone
-                                <div><input type="text" name="phone" placeholder="Phone"></div>
+                                <div><input type="text" name="phone" placeholder="Phone" required></div>
                             </div>
 
                             <div class="col-md-4 my-2">Email
-                                <div><input type="text" name="email" placeholder="Email"></div>
+                                <div><input type="text" name="email" placeholder="Email" required></div>
                             </div>
                             <div class="col-md-4 my-2">Street
-                                <div><input type="text" name="street" placeholder="Street"></div>
+                                <div><input type="text" name="street" placeholder="Street" required></div>
                             </div>
                             <div class="col-md-4 my-2">Apt / Suite / Unit
-                                <div><input type="text" name="appartment" placeholder="Apt / Suite / Unit"></div>
+                                <div><input type="text" name="appartment" placeholder="Apt / Suite / Unit" required></div>
                             </div>
                             <div class="col-md-4 my-2">
                             </div>
                             <div class="col-md-4 my-2">City
-                                <div><input type="text" name="city" placeholder="City"></div>
+                                <div><input type="text" name="city" placeholder="City" required></div>
                             </div>
                             <div class="col-md-4 my-2">State
-                                <div><input type="text" name="state" placeholder="State"></div>
+                                <div><input type="text" name="state" placeholder="State" required></div>
                             </div>
 
                             <div class="col-md-4 my-2">Zipcode
-                                    <div><input type="text" name="zipcode" placeholder="Zipcode"></div>
+                                    <div><input type="text" name="zipcode" placeholder="Zipcode" required></div>
+                            </div>
+                            <div class="row d-flex justify-content-end mt-4">
+                                <button type="submit" class="btn btn-sm btn-info">Save and next</button>
                             </div>
                         </div>
-                        <div class="col-md-2"></div>
-
-                    </div>
-                    <div class="row mt-3">
-                        <div class="mt-3 text-dark">Availability <span class="text-warning">(Add 10 sessions total)</span></div>
-                        @foreach ($weeks as $week)
-                            <div class="col-custom-14 row  mt-3">
-                                <div class="form-group form-check ">
-                                    <input type="checkbox" name="day[]" class="form-check-input" value="{{ $week->day }}" id="{{ $week->day }}">
-                                    <label class="form-check-label" style="font-size:13px;" for="{{ $week->day }}">{{ $week->day }}</label>
-                                </div>
-                                <div class="col-md-12 row employee-details-by-day mt-1  ">
-                                    <div class="col-md-12 m-1 row mp0 text-center">
-                                        <div class="col-md-6 f10 media-quary-width-40">Start</div>
-                                        <div class="col-md-6 f10 media-quary-width-40 media-margin-left-4">End</div>
-                                    </div>
-
-                                    @for ($i = 1; $i <= 8; $i++)
-                                    <div class="col-md-12 m-1 mp0 row employee-details-input-small">
-                                        <input type="time" name="start_time[]" class="col-md-6 mp0 media-quary-width-40">
-
-                                        <input type="time" name="out_time[]" class="col-md-6 mp0 media-quary-width-40 ">
-                                    </div>
-                                    @endfor
-                                </div>
-                            </div>
-                        @endforeach
-
-                    </div>
-                    <div class="row d-flex justify-content-end mt-4">
-                        <button type="submit" class="btn btn-sm btn-info">Create</button>
                     </div>
                 </div>
             </form>
