@@ -12,7 +12,7 @@
                 <div class="">
                     <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                            <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab"
                                 aria-controls="home" aria-selected="true">Website Settings</a>
                         </li>
                         <li class="nav-item">
@@ -20,12 +20,12 @@
                                 aria-controls="profile" aria-selected="false">Week Manage</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                            <a class="nav-link active" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
                                 aria-controls="contact" aria-selected="false">Service Manage</a>
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
                             <div class="row">
                                 <div class="col-md-12">
                                     <form action="{{ route('admin-settings.update', $settings->id) }}" method="post"
@@ -174,7 +174,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="tab-pane fade show active" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                             <div class="row">
                                 <div class="col-md-12 ">
                                     <div class="d-flex justify-content-between">
@@ -192,7 +192,7 @@
                                                 <div class="col-md-10">
                                                   
                                                     <input type="text" name="service_name" value="{{old('service_name')}}"
-                                                        class="form-control  rounded-pill border-primary" placeholder="Service Name..." required>
+                                                        class="form-control  rounded-pill" placeholder="Service Name..." required style="border-color: #8F00FF">
                                                 </div>           
                                                 <div class="col-md-2">
                                                     {{-- <button type="submit" class="right-section-button">Submit</button> --}}
@@ -214,9 +214,15 @@
                                         </thead>
                                         <tbody class="">
                                             @forelse ($services as $service)
+                                            
                                             <tr class="table-tr-border">
                                                 <td class="custom-paragraph-color">{{$loop->iteration}}</td>
-                                                <td class="custom-paragraph-color">{{$service->service_name}}</td>
+                                                <td class="custom-paragraph-color"> 
+                                                    <a  class="text-dark" data-toggle="collapse" href="#editService-{{$service->id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                                        <i class="fa-solid fa-pencil fa-sm mr-1" style="color: #8F00FF"></i>
+                                                        {{$service->service_name}}
+                                                    </a>
+                                                </td>
                                                 <td class="custom-paragraph-color">{{$service->created_at}}</td>
                                                 <td class="custom-paragraph-color d-flex justify-content-center">
                                                     @if($service->status == 'active')
@@ -226,8 +232,32 @@
                                                     <a href="{{route('service.status.update',['id' => $service->id,'status' => 'active'])}}" class="btn btn-primary rounded-pill text-white ">Active</a>
                                                     <a href="#" class="mx-1 btn btn-warning rounded-pill text-white disabled ">Inactive</a>
                                                     @endif
+                                                </td>                                           
+                                            </tr>
+
+                                            <tr class="text-center table-tr-border collapse" id="editService-{{$service->id}}">
+                                                
+                                                <td colspan="4">
+                                                    <div class="card card-body">
+                                                        
+                                                         <form action="{{route('admin-services.update',$service->id)}}" method="post">
+                                                           @csrf
+                                                           @method('put')
+                                                           <div class="form-row">        
+                                                               <div class="col-md-8">
+                    
+                                                                   <input type="text" name="service_name" value="{{ $service->service_name }}"
+                                                                       class="form-control  rounded-pill" placeholder="Service Name..." required style="border-color: #8F00FF">
+                                                               </div>           
+                                                               <div class="col-md-4">
+                                                                   <button type="submit" class="btn rounded-pill w-100 text-white" style="background-color: #8F00FF">Update Service</button>
+                                                               </div>
+                                                           </div>
+                                                         </form>
+                                                       </div>
                                                 </td>
                                             </tr>
+                            
                                             @empty
                                             <tr class="table-tr-border">
                                                 <td>Nothing Found</td>

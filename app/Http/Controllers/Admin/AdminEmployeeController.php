@@ -23,8 +23,8 @@ class AdminEmployeeController extends Controller
      */
     public function create()
     {
-        $weeks = Week::where(['status'=>'active'])->get();
-        return view('admin.pages.employee.create',compact('weeks'));
+
+        return view('admin.pages.employee.create');
     }
 
     /**
@@ -32,8 +32,6 @@ class AdminEmployeeController extends Controller
      */
     public function store(Request $request)
     {
-
-
 
         $employee = new Employee;
         $employee->name = $request->name;
@@ -44,50 +42,10 @@ class AdminEmployeeController extends Controller
         $employee->city = $request->city;
         $employee->state = $request->state;
         $employee->zip_code = $request->zipcode;
-        // $employee->save();
+        $employee->save();
+        $weeks = Week::where(['status'=>'active'])->get();
+        return view('admin.pages.employee.create_avibility_employee',compact('employee','weeks'));
 
-        //avaibility
-
-        $startTimes = $request->input('start_time', []);
-        $outTimes = $request->input('out_time', []);
-        $filteredStartTimes = array_filter($startTimes, function ($time) {
-            return $time !== null;
-        });
-        $filteredOutTimes = array_filter($outTimes, function ($time) {
-            return $time !== null;
-        });
-
-        $count = count($request->day);
-        $groupStartTimes = collect($filteredStartTimes)->chunk($count)->toArray();
-        $groupOutTimes = collect($filteredOutTimes)->chunk($count)->toArray();
-
-        // foreach($days = $request->day as $day){
-        //     foreach($filteredStartTimes as $starttime){
-        //         foreach($filteredOutTimes as $outtime){
-        //             $avaibility = new AvailityEmployee;
-        //             $avaibility->employee_id = $employee->id;
-        //             $avaibility->day = $day;
-        //             $avaibility->start_time = $starttime;
-        //             $avaibility->out_time = $outtime;
-        //             $avaibility->save();
-        //         }
-        //     }
-
-        //     foreach($starttimes = $request->start_time as $starttime){
-        //         $avaibility = new AvailityEmployee;
-        //         $avaibility->employee_id = $employee->id;
-        //         foreach($outtimes = $request->out_time as $outtime){
-        //             if($starttime && $outtime){
-
-
-        //                 $avaibility->day = $day;
-        //                 $avaibility->start_time = $starttime;
-        //                 $avaibility->out_time = $outtime;
-        //                 $avaibility->save();
-        //             }
-        //         }
-        //     }
-        // }
     }
 
     /**
