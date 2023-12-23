@@ -25,14 +25,14 @@
                 </div>
             </div>
             <div class="row home-first-section-second-row pb-4">
-                <div class="col-md-5 col-sm-12 pt-4 pl-3">
+                <div class="col-md-5 custom-height-scroller1 col-sm-12 pt-4 pl-3">
                     <a href="" class="custom-name-color h6 client_list_link">Client List</a>
                     <p class="custom-paragraph-color display-6">Click a client to edit information</p>
                     <div class="row">
                         <small class="col-md-6 col-sm-6">Recently Added</small>
                         <small class="col-md-6 col-sm-6 text-right f10">See All</small>
                     </div>
-                    <div class="row mt-4 bgw-br15">
+                    <div class="row mt-4 new-class-margin1 bgw-br15">
                         <div class="col-md-4 p-2 media-quary-width-30 ">
                             <img src="assets/image/Mask.png" alt="">
                         </div>
@@ -45,7 +45,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-4 bgw-br15">
+                    <div class="row mt-4 new-class-margin1 bgw-br15">
                         <div class="col-md-4 p-2 media-quary-width-30">
                             <img src="assets/image/Mask.png" alt="">
                         </div>
@@ -58,32 +58,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-4 bgw-br15">
-                        <div class="col-md-4 p-2 media-quary-width-30">
-                            <img src="assets/image/Mask.png" alt="">
-                        </div>
-                        <div class="col-md-7 p-2  ml-3 media-quary-width-60" id="">
-                            <small class="">S. Good</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                            <div class="mt-3">
-                                <img src="assets/image/Icon.png" class="section-2-icon" alt="">
-                                <span class="custom-paragraph-color f10">Menefe, CA</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mt-4 bgw-br15">
-                        <div class="col-md-4 p-2 media-quary-width-30">
-                            <img src="assets/image/Mask.png" alt="">
-                        </div>
-                        <div class="col-md-7 p-2  ml-3 media-quary-width-60 " id="">
-                            <small class="">H. Mansfield</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                            <div class="mt-3">
-                                <img src="assets/image/Icon.png" class="section-2-icon" alt="">
-                                <span class="custom-paragraph-color f10">Menefe, CA</span>
-                            </div>
-                        </div>
-                    </div>
+                   
+                   
 
                 </div>
                 <div class="col-md-7 media-quary-margin-left-2p-" id="">

@@ -12,4 +12,30 @@
 
 <link rel="stylesheet" href="{{ asset('/storage/admin/assets/main.css') }}">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+
 @stack('admin-css')
+<style>
+    .home-first-section-second-row{
+    margin-left: -5% !important;
+  }
+  
+  .custom-height-scroller1{
+    height: 500px;
+    overflow: auto;
+  }   
+  .new-class-margin1{
+    margin: 0px 3px 0px -4px;
+} 
+
+.client-middle-section{
+    margin-left: -4% ;
+}
+@media screen and (max-width: 600px) {
+    .new-class-margin1{
+    margin: 0px 0px 0px 0px;
+} 
+
+}
+  
+</style>

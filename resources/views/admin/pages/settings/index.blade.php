@@ -196,7 +196,8 @@
                                                 </div>           
                                                 <div class="col-md-2">
                                                     {{-- <button type="submit" class="right-section-button">Submit</button> --}}
-                                                    <button type="submit" class="btn rounded-pill w-100 text-white" style="background-color: #8F00FF">Submit</button>
+                                                  
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
                                                 </div>
                                             </div>
                                           </form>
