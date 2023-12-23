@@ -30,7 +30,7 @@ class AdminServiceController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'service_name' => 'required|string'
+            'service_name' => 'required|string|unique:services,service_name'
         ]);
 
         Service::create([
@@ -59,8 +59,14 @@ class AdminServiceController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
-        //
+    {   $request->validate([
+        'service_name' => 'required'
+    ]);
+         $service = Service::findOrFail($id);
+         $service->update([
+            'service_name' => $request->service_name
+         ]);
+         return back()->withMessage('Service Updated');
     }
 
     /**
