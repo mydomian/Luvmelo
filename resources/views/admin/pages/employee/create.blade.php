@@ -33,7 +33,7 @@
                             </div>
 
                             <div class="col-md-4 my-2">Email
-                                <div><input type="text" name="email" placeholder="Email" required></div>
+                                <div><input type="email" name="email" placeholder="Email" required></div>
                             </div>
                             <div class="col-md-4 my-2">Street
                                 <div><input type="text" name="street" placeholder="Street" required></div>

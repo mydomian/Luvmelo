@@ -43,8 +43,21 @@ class AdminEmployeeController extends Controller
         $employee->state = $request->state;
         $employee->zip_code = $request->zipcode;
         $employee->save();
+
+
         $weeks = Week::where(['status'=>'active'])->get();
-        return view('admin.pages.employee.create_avibility_employee',compact('employee','weeks'));
+        for($i=0; $i <= 7; $i++){
+            foreach($weeks as $week){
+                $avaiblity = new AvailityEmployee;
+                $avaiblity->employee_id = $employee->id;
+                $avaiblity->day = $week->day;
+                $avaiblity->start_time = null;
+                $avaiblity->out_time = null;
+                $avaiblity->save();
+            }
+        }
+        $avaEmps = AvailityEmployee::where(['employee_id'=>$employee->id])->get()->groupBy('day');
+        return view('admin.pages.employee.create_avibility_employee',compact('employee','avaEmps'));
 
     }
 
@@ -69,7 +82,41 @@ class AdminEmployeeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        // $employee = Employee::findOrFail($id);
+        // $employee->name = $request->name;
+        // $employee->phone = $request->phone;
+        // $employee->email = $request->email;
+        // $employee->street = $request->street;
+        // $employee->appartment = $request->appartment;
+        // $employee->city = $request->city;
+        // $employee->state = $request->state;
+        // $employee->zip_code = $request->zipcode;
+        // $employee->save();
+
+        // $avaIds = [];
+        // foreach($filteredStartTimes as $startTime){
+        //     $avaiblity = new AvailityEmployee;
+        //     $avaiblity->employee_id = $employee->id;
+        //     $avaiblity->day = $request->day;
+        //     $avaiblity->start_time = $startTime;
+        //     $avaiblity->save();
+        //     $avaIds[] = $avaiblity->id;
+        // }
+
+        // foreach($avaIds as $index=>$avaid){
+        //     foreach($filteredOutTimes as $key=>$outTime){
+        //         if($index == $key){
+        //             $ava = AvailityEmployee::find($avaid);
+        //             $ava->out_time = $outTime;
+        //             $ava->save();
+        //         }
+        //     }
+        // }
+        // $weeks = Week::where(['status'=>'active'])->get();
+
+        $avaEmps = AvailityEmployee::where(['employee_id'=>$id])->get()->groupBy('day');
+        return view('admin.pages.employee.create_avibility_employee',compact('employee','avaEmps'));
     }
 
     /**
