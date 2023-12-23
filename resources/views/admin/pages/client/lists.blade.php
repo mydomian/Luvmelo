@@ -28,10 +28,66 @@
         
         <div class="col-md-8 ">
           
-            <div class="row client-middle-section p-4">
+            <div class="row client-middle-section-withoutVH p-4">
               <div class="col-md-12 collapse bgw-br15 mt-2 mb-4" id="addClient">
                 <div class="client-card-custom p-2">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                  <div class="">
+                    <form action="{{ route('admin-clients.store') }}" method="post">
+                        @csrf
+                        <div class="card-body">
+                            <div class="row ">
+                              <div class="d-flex justify-content-between">
+                                <div class="mt-1 h5" style="color: #8F00FF">Add Client</div>
+                                <button type="button" class="close" data-dismiss="collapse" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                                <div class="col-md-12 row employee-details-input mt-2">
+                                    <div class="col-md-4 my-2">
+                                      <label for="form-label"><small>Name</small></label>
+                                    <div><input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name' ?? '')}}" placeholder="Name" required  style="border-color:#8F00FF"></div>
+                                    </div>
+                                    <div class="col-md-4 my-2">
+                                      <label for="form-label"><small>Phone</small></label>
+                                    <div><input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{old('phone' ?? '')}}" placeholder="Phone" required style="border-color:#8F00FF"></div>
+                                    </div>
+        
+                                    <div class="col-md-4 my-2">
+                                      <label for="form-label"><small>Email</small></label>
+                                    <div><input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{old('email' ?? '')}}" placeholder="Email" required style="border-color:#8F00FF"></div>
+                                    </div>
+                                    <div class="col-md-4 my-2">
+                                      <label for="form-label"><small>Street</small></label>
+                                    <div><input type="text" class="form-control @error('street') is-invalid @enderror" name="street" value="{{old('street' ?? '')}}" placeholder="Street" required style="border-color:#8F00FF"></div>
+                                    </div>
+                                    <div class="col-md-4 my-2">
+                                      <label for="form-label"><small>Apt / Suite / Unit</small></label>
+                                    <div><input type="text" class="form-control @error('appartment') is-invalid @enderror" name="appartment" value="{{old('appartment' ?? '')}}" placeholder="Apt / Suite / Unit" required style="border-color:#8F00FF"></div>
+                                    </div>
+                                    <div class="col-md-4 my-2">
+                                    </div>
+                                    <div class="col-md-4 my-2">
+                                      <label for="form-label"><small>City</small></label>
+                                    <div><input type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{old('city' ?? '')}}" placeholder="City" required style="border-color:#8F00FF"></div>
+                                    </div>
+                                    <div class="col-md-4 my-2">
+                                      <label for="form-label"><small>State</small></label>
+                                    <div><input type="text" class="form-control @error('state') is-invalid @enderror" name="state" value="{{old('state' ?? '')}}" placeholder="State" required style="border-color:#8F00FF"></div>
+                                    </div>
+        
+                                    <div class="col-md-4 my-2">
+                                      <label for="form-label"><small>Zipcode</small></label>
+                                        <div><input type="text" class="form-control @error('zip_code') is-invalid @enderror" name="zip_code" value="{{old('zip_code' ?? '')}}" placeholder="Zipcode" required style="border-color:#8F00FF"></div>
+                                    </div>
+                                    <div class="col-md-12 mt-4">
+                                        <button type="submit" class="right-section-button" style="background-color: #8F00FF">Save Client</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+        
+                </div>
                 </div>
               </div>
 
@@ -72,8 +128,8 @@
 
                 </div>
 
-                <div class="col-md-8 mt-3 media-quary-width-88 d-flex align-items-center">Client List (122)</div>
-                <a  class="mt-3 btn btn-primary btn-sm rounded-pill col-md-3" data-toggle="collapse" href="#addClient" role="button" aria-expanded="false" aria-controls="collapseExample" style="background-color: #8F00FF">
+                <div class="col-md-8 mt-3 media-quary-width-88 d-flex align-items-center">Client List ({{$clients->count()}})</div>
+                <a  class="mt-3 btn  btn-sm rounded-pill col-md-3 text-white" data-toggle="collapse" href="#addClient" role="button" aria-expanded="false" aria-controls="collapseExample" style="background-color: #8F00FF">
                   <i class="fa-solid fa-plus"></i> Add Client
                 </a>   
                 <div class="col-md-1 mt-3 media-quary-width-5 dropdown d-flex align-items-center">
@@ -101,367 +157,27 @@
                     </ul>
 
                 </div>
-                
-                <div class="col-md-4">
+                @forelse ($clients as $client)
+                   <div class="col-md-4">
                     <div class="row mt-4 bgw-br15 client-card-custom">
                         <div class="col-md-4 p-2 media-quary-width-30">
-                            <img src="assets/image/Mask2.png" class="section-1-img" alt="">
+                            <img src="{{asset('storage/admin/assets/image/Mask2.png')}}" class="section-1-img" alt="">
                         </div>
                         <div class="col-md-7 p-2 media-quary-width-40">
-                            <small class="">H. Fallinsto</small>
+                            <small class="text-capitalize">{{$client->name}}</small>
                             <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
                             <div class="">
                                 <img src="assets/image/Icon.png" class="section-2-icon" alt="">
-                                <span class="custom-paragraph-color f10">Menefe, CA</span>
+                                <span class="custom-paragraph-color f10 text-capitalize">{{$client->city}}, {{$client->state}}</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="row mt-4 bgw-br15 client-card-custom">
-                        <div class="col-md-4 p-2 media-quary-width-30">
-                            <img src="assets/image/Mask2.png" class="section-1-img" alt="">
-                        </div>
-                        <div class="col-md-7 p-2 media-quary-width-40">
-                            <small class="">H. Fallinsto</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                            <div class="">
-                                <img src="assets/image/Icon.png" class="section-2-icon" alt="">
-                                <span class="custom-paragraph-color f10">Menefe, CA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row mt-4 bgw-br15 client-card-custom">
-                        <div class="col-md-4 p-2 media-quary-width-30">
-                            <img src="assets/image/Mask2.png" class="section-1-img" alt="">
-                        </div>
-                        <div class="col-md-7 p-2 media-quary-width-40">
-                            <small class="">H. Fallinsto</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                            <div class="">
-                                <img src="assets/image/Icon.png" class="section-2-icon" alt="">
-                                <span class="custom-paragraph-color f10">Menefe, CA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row mt-4 bgw-br15 client-card-custom">
-                        <div class="col-md-4 p-2 media-quary-width-30">
-                            <img src="assets/image/Mask2.png" class="section-1-img" alt="">
-                        </div>
-                        <div class="col-md-7 p-2 media-quary-width-40">
-                            <small class="">H. Fallinsto</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                            <div class="">
-                                <img src="assets/image/Icon.png" class="section-2-icon" alt="">
-                                <span class="custom-paragraph-color f10">Menefe, CA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row mt-4 bgw-br15 client-card-custom">
-                        <div class="col-md-4 p-2 media-quary-width-30">
-                            <img src="assets/image/Mask2.png" class="section-1-img" alt="">
-                        </div>
-                        <div class="col-md-7 p-2 media-quary-width-40">
-                            <small class="">H. Fallinsto</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                            <div class="">
-                                <img src="assets/image/Icon.png" class="section-2-icon" alt="">
-                                <span class="custom-paragraph-color f10">Menefe, CA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row mt-4 bgw-br15 client-card-custom">
-                        <div class="col-md-4 p-2 media-quary-width-30">
-                            <img src="assets/image/Mask2.png" class="section-1-img" alt="">
-                        </div>
-                        <div class="col-md-7 p-2 media-quary-width-40">
-                            <small class="">H. Fallinsto</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                            <div class="">
-                                <img src="assets/image/Icon.png" class="section-2-icon" alt="">
-                                <span class="custom-paragraph-color f10">Menefe, CA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row mt-4 bgw-br15 client-card-custom">
-                        <div class="col-md-4 p-2 media-quary-width-30">
-                            <img src="assets/image/Mask2.png" class="section-1-img" alt="">
-                        </div>
-                        <div class="col-md-7 p-2 media-quary-width-40">
-                            <small class="">H. Fallinsto</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                            <div class="">
-                                <img src="assets/image/Icon.png" class="section-2-icon" alt="">
-                                <span class="custom-paragraph-color f10">Menefe, CA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row mt-4 bgw-br15 client-card-custom">
-                        <div class="col-md-4 p-2 media-quary-width-30">
-                            <img src="assets/image/Mask2.png" class="section-1-img" alt="">
-                        </div>
-                        <div class="col-md-7 p-2 media-quary-width-40">
-                            <small class="">H. Fallinsto</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                            <div class="">
-                                <img src="assets/image/Icon.png" class="section-2-icon" alt="">
-                                <span class="custom-paragraph-color f10">Menefe, CA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row mt-4 bgw-br15 client-card-custom">
-                        <div class="col-md-4 p-2 media-quary-width-30">
-                            <img src="assets/image/Mask2.png" class="section-1-img" alt="">
-                        </div>
-                        <div class="col-md-7 p-2 media-quary-width-40">
-                            <small class="">H. Fallinsto</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                            <div class="">
-                                <img src="assets/image/Icon.png" class="section-2-icon" alt="">
-                                <span class="custom-paragraph-color f10">Menefe, CA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row mt-4 bgw-br15 client-card-custom">
-                        <div class="col-md-4 p-2 media-quary-width-30">
-                            <img src="assets/image/Mask2.png" class="section-1-img" alt="">
-                        </div>
-                        <div class="col-md-7 p-2 media-quary-width-40">
-                            <small class="">H. Fallinsto</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                            <div class="">
-                                <img src="assets/image/Icon.png" class="section-2-icon" alt="">
-                                <span class="custom-paragraph-color f10">Menefe, CA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row mt-4 bgw-br15 client-card-custom">
-                        <div class="col-md-4 p-2 media-quary-width-30">
-                            <img src="assets/image/Mask2.png" class="section-1-img" alt="">
-                        </div>
-                        <div class="col-md-7 p-2 media-quary-width-40">
-                            <small class="">H. Fallinsto</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                            <div class="">
-                                <img src="assets/image/Icon.png" class="section-2-icon" alt="">
-                                <span class="custom-paragraph-color f10">Menefe, CA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row mt-4 bgw-br15 client-card-custom">
-                        <div class="col-md-4 p-2 media-quary-width-30">
-                            <img src="assets/image/Mask2.png" class="section-1-img" alt="">
-                        </div>
-                        <div class="col-md-7 p-2 media-quary-width-40">
-                            <small class="">H. Fallinsto</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                            <div class="">
-                                <img src="assets/image/Icon.png" class="section-2-icon" alt="">
-                                <span class="custom-paragraph-color f10">Menefe, CA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row mt-4 bgw-br15 client-card-custom">
-                        <div class="col-md-4 p-2 media-quary-width-30">
-                            <img src="assets/image/Mask2.png" class="section-1-img" alt="">
-                        </div>
-                        <div class="col-md-7 p-2 media-quary-width-40">
-                            <small class="">H. Fallinsto</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                            <div class="">
-                                <img src="assets/image/Icon.png" class="section-2-icon" alt="">
-                                <span class="custom-paragraph-color f10">Menefe, CA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row mt-4 bgw-br15 client-card-custom">
-                        <div class="col-md-4 p-2 media-quary-width-30">
-                            <img src="assets/image/Mask2.png" class="section-1-img" alt="">
-                        </div>
-                        <div class="col-md-7 p-2 media-quary-width-40">
-                            <small class="">H. Fallinsto</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                            <div class="">
-                                <img src="assets/image/Icon.png" class="section-2-icon" alt="">
-                                <span class="custom-paragraph-color f10">Menefe, CA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row mt-4 bgw-br15 client-card-custom">
-                        <div class="col-md-4 p-2 media-quary-width-30">
-                            <img src="assets/image/Mask2.png" class="section-1-img" alt="">
-                        </div>
-                        <div class="col-md-7 p-2 media-quary-width-40">
-                            <small class="">H. Fallinsto</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                            <div class="">
-                                <img src="assets/image/Icon.png" class="section-2-icon" alt="">
-                                <span class="custom-paragraph-color f10">Menefe, CA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row mt-4 bgw-br15 client-card-custom">
-                        <div class="col-md-4 p-2 media-quary-width-30">
-                            <img src="assets/image/Mask2.png" class="section-1-img" alt="">
-                        </div>
-                        <div class="col-md-7 p-2 media-quary-width-40">
-                            <small class="">H. Fallinsto</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                            <div class="">
-                                <img src="assets/image/Icon.png" class="section-2-icon" alt="">
-                                <span class="custom-paragraph-color f10">Menefe, CA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row mt-4 bgw-br15 client-card-custom">
-                        <div class="col-md-4 p-2 media-quary-width-30">
-                            <img src="assets/image/Mask2.png" class="section-1-img" alt="">
-                        </div>
-                        <div class="col-md-7 p-2 media-quary-width-40">
-                            <small class="">H. Fallinsto</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                            <div class="">
-                                <img src="assets/image/Icon.png" class="section-2-icon" alt="">
-                                <span class="custom-paragraph-color f10">Menefe, CA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row mt-4 bgw-br15 client-card-custom">
-                        <div class="col-md-4 p-2 media-quary-width-30">
-                            <img src="assets/image/Mask2.png" class="section-1-img" alt="">
-                        </div>
-                        <div class="col-md-7 p-2 media-quary-width-40">
-                            <small class="">H. Fallinsto</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                            <div class="">
-                                <img src="assets/image/Icon.png" class="section-2-icon" alt="">
-                                <span class="custom-paragraph-color f10">Menefe, CA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row mt-4 bgw-br15 client-card-custom">
-                        <div class="col-md-4 p-2 media-quary-width-30">
-                            <img src="assets/image/Mask2.png" class="section-1-img" alt="">
-                        </div>
-                        <div class="col-md-7 p-2 media-quary-width-40">
-                            <small class="">H. Fallinsto</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                            <div class="">
-                                <img src="assets/image/Icon.png" class="section-2-icon" alt="">
-                                <span class="custom-paragraph-color f10">Menefe, CA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row mt-4 bgw-br15 client-card-custom">
-                        <div class="col-md-4 p-2 media-quary-width-30">
-                            <img src="assets/image/Mask2.png" class="section-1-img" alt="">
-                        </div>
-                        <div class="col-md-7 p-2 media-quary-width-40">
-                            <small class="">H. Fallinsto</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                            <div class="">
-                                <img src="assets/image/Icon.png" class="section-2-icon" alt="">
-                                <span class="custom-paragraph-color f10">Menefe, CA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row mt-4 bgw-br15 client-card-custom">
-                        <div class="col-md-4 p-2 media-quary-width-30">
-                            <img src="assets/image/Mask2.png" class="section-1-img" alt="">
-                        </div>
-                        <div class="col-md-7 p-2 media-quary-width-40">
-                            <small class="">H. Fallinsto</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                            <div class="">
-                                <img src="assets/image/Icon.png" class="section-2-icon" alt="">
-                                <span class="custom-paragraph-color f10">Menefe, CA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row mt-4 bgw-br15 client-card-custom">
-                        <div class="col-md-4 p-2 media-quary-width-30">
-                            <img src="assets/image/Mask2.png" class="section-1-img" alt="">
-                        </div>
-                        <div class="col-md-7 p-2 media-quary-width-40">
-                            <small class="">H. Fallinsto</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                            <div class="">
-                                <img src="assets/image/Icon.png" class="section-2-icon" alt="">
-                                <span class="custom-paragraph-color f10">Menefe, CA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row mt-4 bgw-br15 client-card-custom">
-                        <div class="col-md-4 p-2 media-quary-width-30">
-                            <img src="assets/image/Mask2.png" class="section-1-img" alt="">
-                        </div>
-                        <div class="col-md-7 p-2 media-quary-width-40">
-                            <small class="">H. Fallinsto</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                            <div class="">
-                                <img src="assets/image/Icon.png" class="section-2-icon" alt="">
-                                <span class="custom-paragraph-color f10">Menefe, CA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row mt-4 bgw-br15 client-card-custom">
-                        <div class="col-md-4 p-2 media-quary-width-30">
-                            <img src="assets/image/Mask2.png" class="section-1-img" alt="">
-                        </div>
-                        <div class="col-md-7 p-2 media-quary-width-40">
-                            <small class="">H. Fallinsto</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                            <div class="">
-                                <img src="assets/image/Icon.png" class="section-2-icon" alt="">
-                                <span class="custom-paragraph-color f10">Menefe, CA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @empty
+                  No Clients Yet!
+                @endforelse
+               
+               
             </div>
         </div>
         <div class="col-md-3 p-4 m-3 client-compare-window text-center media-quary-width-97">
@@ -519,4 +235,15 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function(){
+    @if($errors->has('name') || $errors->has('email') ||$errors->has('phone') ||$errors->has('street') ||$errors->has('city') ||$errors->has('appartment') ||$errors->has('state') || $errors->has('zip_code'))
+      $('.collapse').collapse('show')
+    @endif
+
+    $('.close').click(function(){
+      $('.collapse').collapse('hide')
+    })
+  })
+</script>
 @endpush

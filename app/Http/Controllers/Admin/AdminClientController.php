@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Client;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AdminClientController extends Controller
@@ -11,8 +13,9 @@ class AdminClientController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view('admin.pages.client.lists');
+    {   
+        $clients = Client::where('status','active')->latest()->get();
+        return view('admin.pages.client.lists', compact('clients'));
     }
 
     /**
@@ -28,7 +31,20 @@ class AdminClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+            'phone' => 'required',
+            'email' => 'required|email',
+            'street' => 'required|string',
+            'appartment' => 'required|string',
+            'city' => 'required|string',
+            'state' => 'required|string',
+            'zip_code' =>  'required'
+        ]);
+
+        Client::create($request->except('__token')+['created_at'=> Carbon::now()]);
+        return back()->withMessage('Client Saved Successfully');
+
     }
 
     /**
