@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Client;
+use App\Models\Week;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -52,7 +53,7 @@ class AdminClientController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**
@@ -60,7 +61,9 @@ class AdminClientController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $client = Client::findOrFail($id);
+        $days = Week::where('status','active')->get();
+        return view('admin.pages.client.edit', compact('client','days'));
     }
 
     /**
@@ -77,5 +80,13 @@ class AdminClientController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function status(Request $request){
+       $client = Client::find($request->id)->update([
+        'status' => $request->type
+       ]);
+
+       return back()->withMessage('Status updated!');
     }
 }

@@ -41,6 +41,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('admin-services', AdminServiceController::class);
     Route::get('/week/status/update',[AdminSettingController::class,'status'])->name('week.status.update');
     Route::get('/service/status/update',[AdminServiceController::class,'status'])->name('service.status.update');
+    Route::get('/client/status/update',[AdminClientController::class,'status'])->name('admin-clients.status');
 });
 
 Route::match(['get','post'],'/employee/login',[EmployeeController::class,'login'])->name('employee.login');
