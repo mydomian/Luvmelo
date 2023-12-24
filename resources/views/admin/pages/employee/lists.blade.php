@@ -46,17 +46,17 @@
        <div class="container">
         <div class="search-section-custom2 bg-white">
             <img src="{{ asset('/storage/admin/assets/image/icon/search copy 2.png') }}" alt="">
-            <input type="text sm" placeholder="Search employee list">
+            <input type="text sm"  name="search_keyword"  class="employee-search-keyword" placeholder="Search by name / email / zipcode">
         </div>
       </div>
-        <div class="row d-flex justify-content-center">
+        {{-- <div class="row d-flex justify-content-center">
             <div class="col-sm-12 col-md-6 mb-2">
                 <div class="form-group has-search">
                     <span class="fa fa-search form-control-feedback"></span>
                     <input type="text" name="search_keyword" class="form-control employee-search-keyword" placeholder="Search by name / email / zipcode">
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="d-flex justify-content-between col-md-11 mt-3 media-quary-width-88">
             <div>
                 Employee List ({{ $employees->count() }})
