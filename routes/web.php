@@ -33,6 +33,7 @@ Route::group(['middleware' => 'admin'], function () {
     });
     Route::resource('admin-employees', AdminEmployeeController::class);
     Route::match(['get','post'],'admin-employee-avibility-employee/{employee}',[AdminEmployeeController::class,'createAvibilityEmployee'])->name('admin.create_avibility_employee');
+    Route::get('admin-employee-filter',[AdminEmployeeController::class,'employeeFilter'])->name('admin.employeeFilter');
     Route::resource('admin-clients', AdminClientController::class);
     Route::resource('admin-distances', AdminDistanceFinderController::class);
     Route::resource('admin-calanders', AdminCalanderController::class);
