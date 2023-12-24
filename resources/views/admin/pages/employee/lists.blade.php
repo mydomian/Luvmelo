@@ -55,30 +55,16 @@
 
         </div>
 
-        <div class="col-md-11 mt-3 media-quary-width-88">Employee List (12)
+        <div class="col-md-11 mt-3 media-quary-width-88">Employee List ({{ $employees->count() }})
             <a href="{{ route('admin-employees.create') }}" class="btn btn-sm btn-info">Add Employee</a>
         </div>
 
         <div class="col-md-1  mt-3 dropdown media-quary-width-5">
             <!-- Avatar -->
-            <a
-                class="dropdown-toggle d-flex align-items-center hidden-arrow"
-                href="#"
-                role="button"
-                data-mdb-toggle="dropdown"
-                aria-expanded="false"
-            >
-                <img
-                src="{{ asset('/storage/admin/assets/image/Nav.png') }}"
-
-                alt="Black and White Portrait of a Man"
-                loading="lazy"
-                />
+            <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                <img src="{{ asset('/storage/admin/assets/image/Nav.png') }}" alt="Black and White Portrait of a Man" loading="lazy"/>
             </a>
-            <ul
-                class="dropdown-menu dropdown-menu-end bg-dark py-3"
-                aria-labelledby="navbarDropdownMenuAvatar"
-            >
+            <ul class="dropdown-menu dropdown-menu-end bg-dark py-3" aria-labelledby="navbarDropdownMenuAvatar">
                 <li>
                 <a class="dropdown-item text-white pl-5" href="#">Start Time</a>
                 </li>
@@ -108,6 +94,8 @@
             </tr>
           </thead>
           <tbody class="">
+
+
             <tr class="table-tr-border">
              <td class="custom-paragraph-color">J. Zavala</td>
               <td class="custom-paragraph-color">M, T, F</td>
@@ -117,67 +105,6 @@
               <td class="text-primary">---</td>
               <td class="custom-paragraph-color">
                   <button class="request-button ">Request</button>
-              </td>
-            </tr>
-            <tr class="table-tr-border">
-             <td class="custom-paragraph-color">J. Zavala</td>
-              <td class="custom-paragraph-color">M, T, F</td>
-              <td class="custom-number-color">5</td>
-              <td class="custom-paragraph-color">22705 Belaire Ln. Riverside, CA 92550</td>
-              <td class="text-primary">---</td>
-              <td class="text-primary">jtsanders@gmail.com
-              </td>
-              <td class="custom-paragraph-color">
-                  <button class="request-button ">Request</button>
-              </td>
-            </tr>
-            <tr class="table-tr-border">
-             <td class="custom-paragraph-color">J. Zavala</td>
-              <td class="custom-paragraph-color">M, T, F</td>
-              <td class="custom-number-color">5</td>
-              <td class="custom-paragraph-color">22705 Belaire Ln. Riverside, CA 92550</td>
-              <td class="text-primary">---</td>
-              <td class="text-primary">---
-              </td>
-              <td class="custom-paragraph-color">
-                  <button class="request-button-disable ">Request</button>
-              </td>
-            </tr>
-            <tr class="table-tr-border">
-             <td class="custom-paragraph-color">J. Zavala</td>
-              <td class="custom-paragraph-color">M, T, F</td>
-              <td class="custom-number-color">5</td>
-              <td class="custom-paragraph-color">22705 Belaire Ln. Riverside, CA 92550</td>
-              <td class="text-primary">(951) 555- 0133
-              </td>
-              <td class="text-primary">---
-              </td>
-              <td class="custom-paragraph-color">
-                  <button class="request-button-disable ">Request</button>
-              </td>
-            </tr>
-            <tr class="table-tr-border">
-             <td class="custom-paragraph-color">J. Zavala</td>
-              <td class="custom-paragraph-color">M, T, F</td>
-              <td class="custom-number-color">5</td>
-              <td class="custom-paragraph-color">22705 Belaire Ln. Riverside, CA 92550</td>
-              <td class="text-primary">---</td>
-              <td class="text-primary">---
-              </td>
-              <td class="custom-paragraph-color">
-                  <button class="request-button-disable ">Request</button>
-              </td>
-            </tr>
-            <tr class="table-tr-border">
-             <td class="custom-paragraph-color">J. Zavala</td>
-              <td class="custom-paragraph-color">M, T, F</td>
-              <td class="custom-number-color">5</td>
-              <td class="custom-paragraph-color">22705 Belaire Ln. Riverside, CA 92550</td>
-              <td class="text-primary">---</td>
-              <td class="text-primary">---
-              </td>
-              <td class="custom-paragraph-color">
-                  <button class="request-button-disable ">Request</button>
               </td>
             </tr>
 
