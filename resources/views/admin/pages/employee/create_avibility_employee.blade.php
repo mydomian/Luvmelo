@@ -59,11 +59,10 @@
                         @foreach ($avaEmps as $key=>$avaEmp)
 
                             <div class="col-custom-14 row  mt-3">
-                                <form action="{{ route('admin-employees.update',$employee->id) }}" method="post">
+                                <form action="{{ route('admin.create_avibility_employee',$employee->id) }}" method="post">
                                     @csrf
-                                    @method('put')
                                     <div class="form-group form-check ">
-                                        <input type="checkbox" name="day" class="form-check-input"  value="{{ $key }}" id="{{ $key }}">
+                                        <input type="checkbox" name="day" class="form-check-input" @if(dayCheck($employee->id, $key) == 'check') checked @endif value="{{ $key }}" id="{{ $key }}">
                                         <label class="form-check-label" style="font-size:13px;" for="{{ $key }}">{{ $key }}</label>
                                     </div>
                                     <div class="col-md-12 row employee-details-by-day mt-1  ">
