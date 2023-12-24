@@ -20,9 +20,10 @@
         </div>
       </div>
       <div class="row messaging-section-second-row pb-4">
-          <div class="text-center">
-              <div class="search-section"><img class="mr-4" src="assets/image/icon/search copy 2.png" alt="">
-                Search database
+            <div class="container">
+              <div class="search-section-custom2 bg-white">
+                  <img src="{{ asset('/storage/admin/assets/image/icon/search copy 2.png') }}" alt="">
+                  <input type="text sm" placeholder="Search Database">
               </div>
             </div>
             <div class="row">

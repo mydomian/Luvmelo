@@ -91,12 +91,12 @@
                 </div>
               </div>
 
-                <div class="text-center">
-                    <div class="search-section"><img class="mr-4" src="assets/image/icon/search copy 2.png"
-                            alt="">
-                        Search client list
-                    </div>
+              <div class="container">
+                <div class="search-section-custom2 bg-white">
+                    <img src="{{ asset('/storage/admin/assets/image/icon/search copy 2.png') }}" alt="">
+                    <input type="text sm" placeholder="Search Client List">
                 </div>
+              </div>
 
                 <div class="row">
                     <div class="col-md-2"></div>

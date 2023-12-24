@@ -1,6 +1,7 @@
 @extends('admin.layouts.master')
 @section('employees','active')
 @section('admin-content')
+
 <div class="custom-name-color pt-3 overview-text" >
     Employee List
   </div>
@@ -23,11 +24,12 @@
     <div class="col-md-12 ">
 
       <div class="row employee-middle-section p-4">
-        <div class="text-center">
-          <div class="search-section"><img class="mr-4" src="{{ asset('/storage/admin/assets/image/icon/search copy 2.png') }}" alt="">
-            Search employee list
-          </div>
+       <div class="container">
+        <div class="search-section-custom2 bg-white">
+            <img src="{{ asset('/storage/admin/assets/image/icon/search copy 2.png') }}" alt="">
+            <input type="text sm" placeholder="Search employee list">
         </div>
+      </div>
 
         <div class="row">
           <div class="col-md-2"></div>
