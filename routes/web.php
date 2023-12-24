@@ -33,6 +33,7 @@ Route::group(['middleware' => 'admin'], function () {
     });
     Route::resource('admin-employees', AdminEmployeeController::class);
     Route::match(['get','post'],'admin-employee-avibility-employee/{employee}',[AdminEmployeeController::class,'createAvibilityEmployee'])->name('admin.create_avibility_employee');
+    Route::get('admin-employee-filter',[AdminEmployeeController::class,'employeeFilter'])->name('admin.employeeFilter');
     Route::resource('admin-clients', AdminClientController::class);
     Route::resource('admin-distances', AdminDistanceFinderController::class);
     Route::resource('admin-calanders', AdminCalanderController::class);
@@ -41,6 +42,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('admin-services', AdminServiceController::class);
     Route::get('/week/status/update',[AdminSettingController::class,'status'])->name('week.status.update');
     Route::get('/service/status/update',[AdminServiceController::class,'status'])->name('service.status.update');
+    Route::get('/client/status/update',[AdminClientController::class,'status'])->name('admin-clients.status');
 });
 
 Route::match(['get','post'],'/employee/login',[EmployeeController::class,'login'])->name('employee.login');

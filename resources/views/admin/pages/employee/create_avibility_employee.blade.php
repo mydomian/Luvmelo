@@ -87,7 +87,9 @@
                         @endforeach
 
                     </div>
-
+                    <div class="d-flex justify-content-center mt-5">
+                        <a href="{{ route('admin-employees.index') }}" class="btn btn-sm btn-info">Finish -> go to employee lists</a>
+                    </div>
                 </div>
 
 

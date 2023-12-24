@@ -22,8 +22,15 @@
 
                 <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" role="button"
                     data-mdb-toggle="dropdown" aria-expanded="false">
-                    <img src="{{ auth()->user()->profile_photo_path ? asset('storage/admin/assets/image/melo_temp_logo.png') : auth()->user()->profile_photo_url }}"
-                        class="rounded-circle" height="35" alt="Black and White Portrait of a Man" loading="lazy" />
+                    {{-- <img src="{{ auth()->user()->profile_photo_path ? asset('storage/admin/assets/image/melo_temp_logo.png') : auth()->user()->profile_photo_url }}"
+                        class="rounded-circle" height="35" alt="Black and White Portrait of a Man" loading="lazy" /> --}}
+                        <img
+                        src="{{asset('storage/admin/assets/image/melo_temp_logo.png')}}"
+                        class="rounded-circle"
+                        height="35"
+                        alt="Black and White Portrait of a Man"
+                        loading="lazy"
+                        />
                 </a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                     <li>

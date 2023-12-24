@@ -2,6 +2,16 @@
 @section('clients', 'active')
 @push('admin-css')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .client-middle-section-withoutVH{
+            background: rgba(255, 255, 255, 0.557);
+            
+            border-radius: 10px;
+            margin-top: 2%;
+            overflow-x: auto;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            }
+    </style>
 @endpush
 @section('admin-content')
     <div class="custom-name-color pt-3 overview-text">
@@ -26,7 +36,7 @@
             </div>
         </div>
         
-        <div class="col-md-8 ">
+        <div class="col-md-8 p-0 mr-5">
           
             <div class="row client-middle-section-withoutVH p-4">
               <div class="col-md-12 collapse bgw-br15 mt-2 mb-4" id="addClient">
@@ -164,7 +174,12 @@
                             <img src="{{asset('storage/admin/assets/image/Mask2.png')}}" class="section-1-img" alt="">
                         </div>
                         <div class="col-md-7 p-2 media-quary-width-40">
-                            <small class="text-capitalize">{{$client->name}}</small>
+                            <div class="d-flex justify-content-between">
+                                <small class="text-capitalize">{{$client->name}}</small>
+                                <a href="{{route('admin-clients.edit', $client->id)}}" class="btn btn-sm d-flex align-self-end pb-2">
+                                    <i class="fa-solid fa-pencil fa-xs" style="color: #8F00FF"></i>
+                                </a>
+                            </div>
                             <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
                             <div class="">
                                 <img src="assets/image/Icon.png" class="section-2-icon" alt="">
@@ -174,7 +189,7 @@
                     </div>
                 </div>
                 @empty
-                  No Clients Yet!
+                <p class="text-primary mt-2">No Clients Yet!</p>
                 @endforelse
                
                
