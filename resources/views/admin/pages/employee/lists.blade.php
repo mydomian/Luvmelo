@@ -1,4 +1,23 @@
 @extends('admin.layouts.master')
+@push('admin-css')
+    <style>
+        .has-search .form-control {
+            padding-left: 2.375rem;
+        }
+
+        .has-search .form-control-feedback {
+            position: absolute;
+            z-index: 2;
+            display: block;
+            width: 2.375rem;
+            height: 2.375rem;
+            line-height: 2.375rem;
+            text-align: center;
+            pointer-events: none;
+            color: #aaa;
+        }
+    </style>
+@endpush
 @section('employees','active')
 @section('admin-content')
 <div class="custom-name-color pt-3 overview-text" >
@@ -23,40 +42,23 @@
     <div class="col-md-12 ">
 
       <div class="row employee-middle-section p-4">
-        <div class="text-center">
-          <div class="search-section"><img class="mr-4" src="{{ asset('/storage/admin/assets/image/icon/search copy 2.png') }}" alt="">
-            Search employee list
-          </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-sm-12 col-md-6 mb-2">
+                <div class="form-group has-search">
+                    <span class="fa fa-search form-control-feedback"></span>
+                    <input type="text" name="search_keyword" class="form-control employee-search-keyword" placeholder="Search by name / email / zipcode">
+                </div>
+            </div>
         </div>
+        <div class="d-flex justify-content-between col-md-11 mt-3 media-quary-width-88">
+            <div>
+                Employee List ({{ $employees->count() }})
+            </div>
+            <div>
+                <a href="{{ route('admin-employees.create') }}" class="btn btn-sm btn-info" style="margin-top:-5px;">Add Employee</a>
 
-        <div class="row">
-          <div class="col-md-2"></div>
-          <div class="text-center mt-2 col-md-2 media-quary-width-50">
-            <div class="select-section-employee"><img class="mr-2 " src="{{ asset('/storage/admin/assets/image/icon/Vector-cross.png') }}" alt="">
-              James
             </div>
-          </div>
-          <div class="text-center mt-2 col-md-2 media-quary-width-50">
-            <div class="select-section-employee"><img class="mr-2 " src="{{ asset('/storage/admin/assets/image/icon/Vector-cross.png') }}" alt="">
-              Wiseman
-            </div>
-          </div>
-          <div class="text-center mt-2 col-md-2 media-quary-width-50">
-            <div class="select-section-employee"><img class="mr-2 " src="{{ asset('/storage/admin/assets/image/icon/Vector-cross.png') }}" alt="">
-              Telmecula
-            </div>
-          </div>
-          <div class="text-center mt-2 col-md-2 media-quary-width-50">
-            <div class="select-section-employee"><img class="mr-2 " src="{{ asset('/storage/admin/assets/image/icon/Vector-cross.png') }}" alt="">
-              90133
-            </div>
-          </div>
-          <div class="col-md-2"></div>
 
-        </div>
-
-        <div class="col-md-11 mt-3 media-quary-width-88">Employee List ({{ $employees->count() }})
-            <a href="{{ route('admin-employees.create') }}" class="btn btn-sm btn-info">Add Employee</a>
         </div>
 
         <div class="col-md-1  mt-3 dropdown media-quary-width-5">
@@ -66,17 +68,21 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end bg-dark py-3" aria-labelledby="navbarDropdownMenuAvatar">
                 <li>
-                <a class="dropdown-item text-white pl-5" href="#">Start Time</a>
+                    <a class="dropdown-item" href="{{ route('admin-employees.index') }}">
+                        @if(!request()->query('filter'))<span><img src="{{ asset('/storage/admin/assets/image/Component_icon_ic_Ch.png') }}" alt=""></span>@endif <span class="text-white pl-3">Default</span>
+                    </a>
+
                 </li>
                 <li>
-                <a class="dropdown-item text-white pl-5" href="#">Name</a>
+                    <a class="dropdown-item" href="{{ route('admin-employees.index',['filter'=>'ASC']) }}">
+                        @if(request()->query('filter') == 'ASC')<span><img src="{{ asset('/storage/admin/assets/image/Component_icon_ic_Ch.png') }}" alt=""></span>@endif <span class="text-white pl-3">New to Old</span>
+                    </a>
+
                 </li>
                 <li>
-                <a class="dropdown-item" href="#">
-                  <span><img src="{{ asset('/storage/admin/assets/image/Component_icon_ic_Ch.png') }}" alt=""></span> <span class="text-white pl-3">Slots</span></a>
-                </li>
-                <li>
-                <a class="dropdown-item text-white pl-5" href="#">New to Old</a>
+                    <a class="dropdown-item" href="{{ route('admin-employees.index',['filter'=>'DESC']) }}">
+                        @if(request()->query('filter') == 'DESC')<span><img src="{{ asset('/storage/admin/assets/image/Component_icon_ic_Ch.png') }}" alt=""></span> @endif <span class="text-white pl-3">Old to New</span>
+                    </a>
                 </li>
             </ul>
 
@@ -84,30 +90,20 @@
         <table class="table table-borderless align-items-center mt-3">
           <thead class="table-thead-color">
             <tr>
-              <th scope="col">Name </th>
-              <th scope="col">Preferred Drag</th>
-              <th scope="col">Slots</th>
-              <th scope="col">Address</th>
-              <th scope="col">Phone</th>
-              <th scope="col">Email</th>
-              <th scope="col">Client List</th>
+              <th>Name </th>
+              <th>Slots</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th>Street</th>
+              <th>Apt</th>
+              <th>City</th>
+              <th>State</th>
+              <th>Zipcode</th>
+              <th>Client</th>
             </tr>
           </thead>
-          <tbody class="">
-
-
-            <tr class="table-tr-border">
-             <td class="custom-paragraph-color">J. Zavala</td>
-              <td class="custom-paragraph-color">M, T, F</td>
-              <td class="custom-number-color">5</td>
-              <td class="custom-paragraph-color">22705 Belaire Ln. Riverside, CA 92550</td>
-              <td class="text-primary">---</td>
-              <td class="text-primary">---</td>
-              <td class="custom-paragraph-color">
-                  <button class="request-button ">Request</button>
-              </td>
-            </tr>
-
+          <tbody class="append_lists">
+            @include('admin.pages.employee.append.lists')
           </tbody>
         </table>
       </div>
@@ -118,3 +114,22 @@
   </div>
 
 @endsection
+
+@push('admin-scripts')
+    <script>
+        $(".employee-search-keyword").on("keyup change", function(e) {
+            var searchKeyword = $(this).val();
+            $.ajax({
+                url: "{{ route('admin.employeeFilter') }}",
+                method: 'get',
+                data: { searchKeyword:searchKeyword },
+                success: function(res) {
+                    $('.append_lists').html(res);
+                },
+                error: function(res){
+                    console.log(res);
+                }
+            });
+        })
+    </script>
+@endpush
