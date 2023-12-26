@@ -152,6 +152,7 @@
              </div>
         </div>
         <div class="col-md-8 media-margin-left-12 media-margin-top-10 mb-3">
+
           <div class="text-center">
             <div class="search-section-employee mt-1" ><img class="mr-4" src="{{ asset('/storage/employee/assets/image/icon/search copy 2.png') }}" alt="">
               Search database

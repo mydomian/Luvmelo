@@ -99,7 +99,7 @@
 
                 <div class="col-md-1 dropleft media-quary-width-5" id="">
                     <!-- Avatar -->
-                    <a class="d-flex align-items-center hidden-arrow" href="#" role="button"
+                    <a class="col-md-12 d-flex align-items-center hidden-arrow" href="#" role="button"
                         data-mdb-toggle="dropdown" aria-expanded="false">
                         <img src="{{ asset('storage/admin/assets/image/Nav.png') }}"
                             alt="Black and White Portrait of a Man" loading="lazy" />

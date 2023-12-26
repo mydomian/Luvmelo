@@ -18,8 +18,11 @@
         }
     </style>
 @endpush
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 @section('employees','active')
 @section('admin-content')
+
 <div class="custom-name-color pt-3 overview-text" >
     Employee List
   </div>
@@ -39,24 +42,89 @@
         </div>
       </div>
     </div>
+    <div class="row justify-content-center">
+      <div class="col-md-8 collapse mt-2" id="addEmployee">
+        <div class="row pb-5">
+          <div class="col-md-12 mt-3 custom-paragraph-color">
+              <div class="card">
+                  <form action="{{ route('admin-employees.store') }}" method="post">
+                      @csrf
+                      <div class="card-body">
+                          <div class="row d-flex justify-content-center">
+                              <div class="mt-3 text-dark text-center">General</div>
+                              <div class="col-md-8 row employee-details-input mt-2">
+                                  <div class="col-md-4 my-2">Name
+                                      <div><input type="text" name="name" placeholder="Name" required></div>
+                                  </div>
+                                  <div class="col-md-4 my-2">Phone
+                                      <div><input type="text" name="phone" placeholder="Phone" required></div>
+                                  </div>
+                                  <div class="col-md-4 my-2">Email
+                                      <div><input type="text" name="Email" placeholder="Email" required></div>
+                                  </div>
+      
+                                  <div class="col-md-4 my-2">Street
+                                      <div><input type="text" name="street" placeholder="Street" required></div>
+                                  </div>
+                                  <div class="col-md-4 my-2">Apt / Suite / Unit
+                                      <div><input type="text" name="appartment" placeholder="Apt / Suite / Unit" required></div>
+                                  </div>
+                                  <div class="col-md-4 my-2">
+                                  </div>
+                                  <div class="col-md-4 my-2">City
+                                      <div><input type="text" name="city" placeholder="City" required></div>
+                                  </div>
+                                  <div class="col-md-4 my-2">State
+                                      <div><input type="text" name="state" placeholder="State" required></div>
+                                  </div>
+      
+                                  <div class="col-md-4 my-2">Zipcode
+                                          <div><input type="text" name="zipcode" placeholder="Zipcode" required></div>
+                                  </div>
+                                  <div class="row d-flex justify-content-end mt-4 ml-1">
+                                      <button type="submit" class="btn btn-sm btn-info">Save and next</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </form>
+      
+              </div>
+          </div>
+      
+        </div>
+      </div>
+    </div>
+
     <div class="col-md-12 ">
 
       <div class="row employee-middle-section p-4">
-        <div class="row d-flex justify-content-center">
+
+
+       <div class="container">
+        <div class="search-section-custom2 bg-white">
+            <img src="{{ asset('/storage/admin/assets/image/icon/search copy 2.png') }}" alt="">
+            <input type="text sm"  name="search_keyword"  class="employee-search-keyword" placeholder="Search by name / email / zipcode">
+        </div>
+      </div>
+        {{-- <div class="row d-flex justify-content-center">
             <div class="col-sm-12 col-md-6 mb-2">
                 <div class="form-group has-search">
                     <span class="fa fa-search form-control-feedback"></span>
                     <input type="text" name="search_keyword" class="form-control employee-search-keyword" placeholder="Search by name / email / zipcode">
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="d-flex justify-content-between col-md-11 mt-3 media-quary-width-88">
             <div>
                 Employee List ({{ $employees->count() }})
             </div>
             <div>
+
                 <a href="{{ route('admin-employees.create') }}" class="btn btn-sm btn-info" style="margin-top:-5px;">Add Employee</a>
+
             </div>
+          
 
         </div>
 

@@ -1,5 +1,4 @@
 @foreach ($employees as $employee)
-
         <tr class="table-tr-border">
             <td class="custom-paragraph-color">{{ $employee->name }}</td>
             <td class="custom-number-color">{{ employeeSlotCount($employee->id) }}</td>
@@ -15,4 +14,5 @@
                 <button class="request-button ml-2">Request</button>
             </td>
         </tr>
+
 @endforeach

@@ -20,9 +20,10 @@
         </div>
       </div>
       <div class="row messaging-section-second-row pb-4">
-          <div class="text-center">
-              <div class="search-section"><img class="mr-4" src="assets/image/icon/search copy 2.png" alt="">
-                Search database
+            <div class="container">
+              <div class="search-section-custom2 bg-white">
+                  <img src="{{ asset('/storage/admin/assets/image/icon/search copy 2.png') }}" alt="">
+                  <input type="text sm" placeholder="Search Database">
               </div>
             </div>
             <div class="row">
@@ -245,14 +246,14 @@
         <div class="col-md-1 dropdown media-quary-width-5">
             <!-- Avatar -->
             <a
-                class="dropdown-toggle d-flex align-items-center hidden-arrow"
+                class=" col-md-12 dropdown-toggle d-flex align-items-center hidden-arrow"
                 href="#"
                 role="button"
                 data-mdb-toggle="dropdown"
                 aria-expanded="false"
             >
                 <img
-                src="assets/image/Nav.png"
+                src="{{ asset('storage/admin/assets/image/Nav.png') }}"
 
                 alt="Black and White Portrait of a Man"
                 loading="lazy"

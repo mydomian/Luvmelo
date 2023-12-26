@@ -31,6 +31,32 @@
 .client-middle-section{
     margin-left: -4% ;
 }
+
+.search-section-custom2 {
+      width: 75%;
+      border: 1px solid #ccc;
+      border-radius: 25px;
+      padding: 10px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      margin: 0 auto; 
+  }
+
+  .search-section-custom2 img {
+      width: 20px; 
+      margin: 0 15px;
+      border-radius: 50%;
+  }
+
+  .search-section-custom2 input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 16px;
+  }
+
+
 @media screen and (max-width: 600px) {
     .new-class-margin1{
     margin: 0px 0px 0px 0px;
