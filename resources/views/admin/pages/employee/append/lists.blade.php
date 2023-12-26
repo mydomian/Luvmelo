@@ -11,6 +11,10 @@
         <td class="text-primary">{{ $employee->zip_code }}</td>
         <td style="width:200px; display:flex; justify-content:center">
             <a href="{{ route('admin.create_avibility_employee',$employee->id) }}" class="request-button">Edit <i class="fas fa-edit"></i> </a>
+            
+
+            {{-- <a href="#editEmployee" role="button" aria-expanded="false" aria-controls="editEmployee" class="request-button"  data-bs-toggle="collapse">Edit <i class="fas fa-edit"></i> </a>
+            --}}
             <button class="request-button ml-2">Request</button>
         </td>
     </tr>

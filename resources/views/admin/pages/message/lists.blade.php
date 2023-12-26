@@ -246,14 +246,14 @@
         <div class="col-md-1 dropdown media-quary-width-5">
             <!-- Avatar -->
             <a
-                class="dropdown-toggle d-flex align-items-center hidden-arrow"
+                class=" col-md-12 dropdown-toggle d-flex align-items-center hidden-arrow"
                 href="#"
                 role="button"
                 data-mdb-toggle="dropdown"
                 aria-expanded="false"
             >
                 <img
-                src="assets/image/Nav.png"
+                src="{{ asset('storage/admin/assets/image/Nav.png') }}"
 
                 alt="Black and White Portrait of a Man"
                 loading="lazy"

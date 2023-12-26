@@ -90,6 +90,7 @@
                 </div>
                 </div>
               </div>
+      
 
               <div class="container">
                 <div class="search-section-custom2 bg-white">
@@ -132,6 +133,7 @@
                 <a  class="mt-3 btn  btn-sm rounded-pill col-md-3 text-white" data-toggle="collapse" href="#addClient" role="button" aria-expanded="false" aria-controls="collapseExample" style="background-color: #8F00FF">
                   <i class="fa-solid fa-plus"></i> Add Client
                 </a>   
+            
                 <div class="col-md-1 mt-3 media-quary-width-5 dropdown d-flex align-items-center">
                     <!-- Avatar -->
                     <a class="col-md-12 dropdown-toggle d-flex align-items-center hidden-arrow" href="#" role="button"
@@ -141,7 +143,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end bg-dark py-3" aria-labelledby="navbarDropdownMenuAvatar">
                         <li>
-                            <a class="dropdown-item text-white pl-5" href="#">Old to New</a>
+                            <a class="dropdown-item text-primary pl-5" href="#">Old to New</a>
                         </li>
                         <li>
                             <a class="dropdown-item text-white pl-5" href="#">New to Old</a>
