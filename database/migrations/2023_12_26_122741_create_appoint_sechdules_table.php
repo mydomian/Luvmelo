@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('availity_employees', function (Blueprint $table) {
+        Schema::create('appoint_sechdules', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('employee_id');
-            $table->string('day');
+            $table->unsignedBigInteger('client_id');
+            $table->string('day')->nullable();
             $table->time('start_time')->nullable();
             $table->time('out_time')->nullable();
             $table->timestamps();
-            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
         });
     }
 
@@ -27,8 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('availity_employees');
-        Schema::enableForeignKeyConstraints();
+        Schema::dropIfExists('appoint_sechdules');
     }
 };
