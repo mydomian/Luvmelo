@@ -120,7 +120,9 @@
                 Employee List ({{ $employees->count() }})
             </div>
             <div>
-                <a href="#addEmployee" role="button" aria-expanded="false" aria-controls="addEmployee" data-bs-toggle="collapse"  class="btn btn-sm btn-info" style="margin-top:-5px;"><i class="fa-solid fa-plus"></i> Add Employee</a>
+
+                <a href="{{ route('admin-employees.create') }}" class="btn btn-sm btn-info" style="margin-top:-5px;">Add Employee</a>
+
             </div>
           
 
@@ -136,14 +138,13 @@
                     <a class="dropdown-item" href="{{ route('admin-employees.index') }}">
                         @if(!request()->query('filter'))<span><img src="{{ asset('/storage/admin/assets/image/Component_icon_ic_Ch.png') }}" alt=""></span>@endif <span class="text-white pl-3">Default</span>
                     </a>
-
                 </li>
                 <li>
                     <a class="dropdown-item" href="{{ route('admin-employees.index',['filter'=>'ASC']) }}">
                         @if(request()->query('filter') == 'ASC')<span><img src="{{ asset('/storage/admin/assets/image/Component_icon_ic_Ch.png') }}" alt=""></span>@endif <span class="text-white pl-3">New to Old</span>
                     </a>
-
                 </li>
+
                 <li>
                     <a class="dropdown-item" href="{{ route('admin-employees.index',['filter'=>'DESC']) }}">
                         @if(request()->query('filter') == 'DESC')<span><img src="{{ asset('/storage/admin/assets/image/Component_icon_ic_Ch.png') }}" alt=""></span> @endif <span class="text-white pl-3">Old to New</span>
@@ -171,8 +172,8 @@
             @include('admin.pages.employee.append.lists')
           </tbody>
         </table>
-      </div>
 
+      </div>
 
     </div>
 
