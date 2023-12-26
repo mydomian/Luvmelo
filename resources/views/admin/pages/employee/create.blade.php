@@ -41,7 +41,8 @@
                             <div class="col-md-4 my-2">Apt / Suite / Unit
                                 <div><input type="text" name="appartment" placeholder="Apt / Suite / Unit" required></div>
                             </div>
-                            <div class="col-md-4 my-2">
+                            <div class="col-md-4 my-2">Password
+                                <div><input type="text" name="password" placeholder="Password"  required></div>
                             </div>
                             <div class="col-md-4 my-2">City
                                 <div><input type="text" name="city" placeholder="City" required></div>

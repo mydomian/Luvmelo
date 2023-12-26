@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('city');
             $table->string('state');
             $table->string('zip_code');
-            $table->enum('status',['active','unactive'])->default('active');
+            $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();
         });
     }

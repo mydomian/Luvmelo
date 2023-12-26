@@ -55,7 +55,16 @@
                         </div>
                     </div>
                     <div class="row mt-5">
-                        <div class="mt-3 text-dark text-center">Availability <span class="text-warning">(Add 10 sessions total)</span></div>
+                        <div class="d-flex justify-content-between">
+                            <div class="text-dark">Availability <span class="text-warning">(Add 10 sessions total)</span></div>
+                            <div>
+                                @if ($employee->status == 'active')
+                                    <a href="{{ route('admin.employeeStatus',['employee'=>$employee->id,'status'=>'inactive']) }}" class="btn btn-sm btn-danger">Inactive</a>
+                                @else
+                                    <a href="{{ route('admin.employeeStatus',['employee'=>$employee->id,'status'=>'active']) }}" class="btn btn-sm btn-success">Active</a>
+                                @endif
+                            </div>
+                        </div>
                         @foreach ($avaEmps as $key=>$avaEmp)
 
                             <div class="col-custom-14 row  mt-3">
