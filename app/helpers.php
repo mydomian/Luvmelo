@@ -11,7 +11,6 @@ function avaibilityEmp($employeeId, $day){
 }
 
 function dayCheck($employeeId, $weekDay){
-
     $avas = avaibilityEmp($employeeId, $weekDay)->whereNotNull('start_time')->get();
     if(count($avas) > 0){
         return "check";

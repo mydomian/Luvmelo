@@ -44,6 +44,10 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/week/status/update',[AdminSettingController::class,'status'])->name('week.status.update');
     Route::get('/service/status/update',[AdminServiceController::class,'status'])->name('service.status.update');
     Route::get('/client/status/update',[AdminClientController::class,'status'])->name('admin-clients.status');
+
+
+    // ajax
+    Route::get('day-wise-slot',[AdminEmployeeController::class,'dayWiseSlot'])->name('admin.dayWiseSloat');
 });
 
 Route::match(['get','post'],'/employee/login',[EmployeeController::class,'login'])->name('employee.login');

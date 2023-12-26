@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AppointSechdule;
 use App\Models\AvailityEmployee;
+use App\Models\Client;
 use App\Models\Employee;
 use App\Models\User;
 use App\Models\Week;
@@ -54,6 +56,7 @@ class AdminEmployeeController extends Controller
         $employee->name = $request->name;
         $employee->phone = $request->phone;
         $employee->email = $request->email;
+        $employee->password = $request->password;
         $employee->street = $request->street;
         $employee->appartment = $request->appartment;
         $employee->city = $request->city;
@@ -113,7 +116,9 @@ class AdminEmployeeController extends Controller
         }
 
         $avaEmps = AvailityEmployee::where(['employee_id'=>$id])->latest()->get()->groupBy('day');
-        return view('admin.pages.employee.create_avibility_employee',compact('employee','avaEmps'));
+        $clientsAll = Client::where('status','active')->get();
+        $weeks = Week::where(['status'=>'active'])->get();
+        return view('admin.pages.employee.create_avibility_employee',compact('employee','avaEmps','clientsAll','weeks'));
     }
 
     public function adminEmployeeStatus(Request $request){
@@ -132,11 +137,14 @@ class AdminEmployeeController extends Controller
             }
         }
     }
-
     public function itemDestroy($avaiblities){
         foreach($avaiblities as $avaiblity){
             $ava = AvailityEmployee::find($avaiblity->id);
             $ava->delete();
         }
+    }
+    public function dayWiseSlot(Request $request){
+        $appSechdule = AppointSechdule::where(['day'=>$request->query('day')])->whereNotNull('start_time')->get()->unique('start_time');
+        return $appSechdule;
     }
 }
