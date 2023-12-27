@@ -26,7 +26,7 @@
         <div class="col-md-11 ">
 
             <div class="row client-middle-section-edit p-4">
-                <div class="col-md-12 mt-3 h6">Client Profile {{ ucwords($client->name) }}</div>
+                <div class="col-md-12 mt-3 h6">Client Profile</div>
                 <table class="table table-borderless align-items-center mt-3">
                     <thead class="table-thead-color">
                         <tr>

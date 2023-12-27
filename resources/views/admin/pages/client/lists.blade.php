@@ -93,7 +93,7 @@
       
 
               <div class="container">
-                <div class="search-section-custom2 bg-white">
+                <div class="search-section-custom2  bg-white">
                     <img src="{{ asset('/storage/admin/assets/image/icon/search copy 2.png') }}" alt="">
                     <input type="text sm" placeholder="Search Client List">
                 </div>
@@ -128,7 +128,9 @@
                     <div class="col-md-2"></div>
 
                 </div>
+            <div class="bgw-br15">
 
+            </div>
                 <div class="col-md-8 mt-3 media-quary-width-88 d-flex align-items-center">Client List ({{$clients->count()}})</div>
                 <a  class="mt-3 btn  btn-sm rounded-pill col-md-3 text-white" data-toggle="collapse" href="#addClient" role="button" aria-expanded="false" aria-controls="collapseExample" style="background-color: #8F00FF">
                   <i class="fa-solid fa-plus"></i> Add Client
@@ -166,7 +168,12 @@
                             <img src="{{asset('storage/admin/assets/image/Mask2.png')}}" class="section-1-img" alt="">
                         </div>
                         <div class="col-md-7 p-2 media-quary-width-40">
-                            <small class="text-capitalize">{{$client->name}}</small>
+                            <div class="d-flex justify-content-between">
+                                <small class="text-capitalize">{{$client->name}}</small>
+                                <a href="{{route('admin-clients.edit', $client->id)}}" class="btn btn-sm d-flex align-self-end pb-2">
+                                    <i class="fa-solid fa-pencil fa-xs" style="color: #8F00FF"></i>
+                                </a>
+                            </div>
                             <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
                             <div class="">
                                 <img src="assets/image/Icon.png" class="section-2-icon" alt="">
