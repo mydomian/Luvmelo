@@ -156,11 +156,15 @@ class AdminEmployeeController extends Controller
     }
 
     public function clientAssign(Request $request){
-        return $request->all();
-        $clientAssign = new ClientAssign;
-        $clientAssign->employee_id = $request->employee_id;
-        $clientAssign->client_id = $request->client_id;
-        $clientAssign->save();
-        return redirect()->route('admin.create_avibility_employee',$request->employee_id);
+        $assignCheck = ClientAssign::where(['employee_id'=>$request->employee_id,'client_id'=>$request->client_id,'status'=>'pending'])->first();
+        if($assignCheck){
+            return redirect()->route('admin.create_avibility_employee',$request->employee_id)->with('error','Already Assign');
+        }else{
+            $clientAssign = new ClientAssign;
+            $clientAssign->employee_id = $request->employee_id;
+            $clientAssign->client_id = $request->client_id;
+            $clientAssign->save();
+        }
+        return redirect()->route('admin.create_avibility_employee',$request->employee_id)->with('message','Client Assign Successfully');
     }
 }

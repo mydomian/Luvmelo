@@ -133,45 +133,12 @@
                             <div class="col-md-8 f10 mt-1 media-quary-width-60">Changes to slots are pending employee approval.
                             </div>
                         </div>
-                        <div class="col-md-11 mt-3">Clients assigned</div>
-                        <div class="col-md-10 row">
-                            @foreach ($assignClients as $assignClient)
-                                <div class="col-md-4 media-quary-width-100 ">
-                                    <div class="row mt-4 bgw-br15 employee-client-card-custom">
-                                    <div class="col-md-3 media-quary-width-30 p-2">
-                                        <img src="{{ asset('/storage/admin/assets/image/Mask2.png') }}" class="section-1-img" alt="">
-                                    </div>
-                                    <div class="col-md-6 media-quary-width-50 pt-2 pb-2 ml-3 ">
-                                        <small style="font-size:12px;">{{ $assignClient->client_assign ? $assignClient->client_assign->name : '-' }}</small>
-                                        <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                                        <div class="">
-                                            <img src="{{ asset('/storage/admin/assets/image/Icon.png') }}" class="section-2-icon" alt="">
-                                            <span class="" style="font-size:8px;">{{ $assignClient->client_assign->street  }}</span>
-                                            <span class="" style="font-size:8px;">{{ $assignClient->client_assign->appartment  }}</span>
-                                            <span class="" style="font-size:8px;">{{ $assignClient->client_assign->city  }}</span>
-                                            <span class="" style="font-size:8px;">{{ $assignClient->client_assign->state  }}</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-1 media-quary-width-10 employee-client-card-custom">
-                                        <input type="checkbox">
-                                    </div>
-                                    </div>
-                                </div>
-                            @endforeach
 
-                        </div>
-                        <div class="col-md-2">
-                            <div class="col-md-12 empoyee-view-drop-drag-section mt-4 d-flex justify-content-center align-items-center">
-                                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                    +
-                                </a>
-                            </div>
 
-                        </div>
+
                         <div class="collapse" id="collapseExample">
                             <div class="row d-flex justify-content-end">
                                 <div class="col-8">
-
                                          <div class="card card-body">
                                             <h6>Client Assign</h6>
                                             <form action="{{ route('admin.clientAssign') }}" method="post">
@@ -231,6 +198,43 @@
                             </div>
                         </div>
 
+                        <div class="col-md-11 mt-3">Clients assigned</div>
+                        <div class="col-md-10 row">
+                            @foreach ($assignClients as $assignClient)
+                                <div class="col-md-4 media-quary-width-100 ">
+                                    <div class="row mt-4 bgw-br15 employee-client-card-custom">
+                                    <div class="col-md-3 media-quary-width-30 p-2">
+                                        <img src="{{ asset('/storage/admin/assets/image/Mask2.png') }}" class="section-1-img" alt="">
+                                    </div>
+                                    <div class="col-md-6 media-quary-width-50 pt-2 pb-2 ml-3 ">
+                                        <small style="font-size:12px;">{{ $assignClient->client_assign ? $assignClient->client_assign->name : '-' }}</small>
+                                        <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
+                                        <div class="">
+                                            <img src="{{ asset('/storage/admin/assets/image/Icon.png') }}" class="section-2-icon" alt="">
+                                            <span class="" style="font-size:8px;">{{ $assignClient->client_assign->street  }}</span>
+                                            <span class="" style="font-size:8px;">{{ $assignClient->client_assign->appartment  }}</span>
+                                            <span class="" style="font-size:8px;">{{ $assignClient->client_assign->city  }}</span>
+                                            <span class="" style="font-size:8px;">{{ $assignClient->client_assign->state  }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 media-quary-width-10 employee-client-card-custom">
+                                        <input type="checkbox">
+                                    </div>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        </div>
+                        <div class="col-md-2">
+
+                            <div class="col-md-12 empoyee-view-drop-drag-section mt-4 d-flex justify-content-center align-items-center">
+
+                                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                    +
+                                </a>
+                            </div>
+
+                        </div>
                     </div>
                     <div class="d-flex justify-content-center mt-5">
                         <a href="{{ route('admin-employees.index') }}" class="btn btn-sm btn-info">Finish -> go to employee lists</a>
