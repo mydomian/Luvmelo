@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\AppointSechdule;
 use App\Models\AvailityEmployee;
 
 function Emp($employeeId){
@@ -23,3 +24,11 @@ function employeeSlotCount($employeeId){
     return $ava = Emp($employeeId)->whereNotNull('start_time')->count();
 }
 
+function scheduleCheck($client_id, $day){
+    $schedule = AppointSechdule::where(['client_id' => $client_id,'day' => $day ])->whereNotNull('start_time')->get();
+    if($schedule->count() > 0){
+        return true;
+    }else{
+        return false;
+    }
+}
