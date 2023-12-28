@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AppointSechdule;
 use App\Models\Client;
+use App\Models\Note;
+use App\Models\Service;
 use App\Models\Week;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -13,10 +16,14 @@ class AdminClientController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {   
-        $clients = Client::where('status','active')->latest()->get();
-        return view('admin.pages.client.lists', compact('clients'));
+        $services = Service::where('status','active')->latest()->get();
+        $clients = Client::with('service')->where('status','active')->latest()->get();
+        if($request->query('filter')){
+            $clients = Client::where('status')->orderBy('id',$request->query('filter'))->get();
+        }
+        return view('admin.pages.client.lists', compact('clients','services'));
     }
 
     /**
@@ -40,11 +47,23 @@ class AdminClientController extends Controller
             'appartment' => 'required|string',
             'city' => 'required|string',
             'state' => 'required|string',
-            'zip_code' =>  'required'
+            'zip_code' =>  'required',
+            'service_id'    => 'required'
         ]);
 
-        Client::create($request->except('__token')+['created_at'=> Carbon::now()]);
-        return back()->withMessage('Client Saved Successfully');
+       $client = Client::create($request->except('__token')+['created_at'=> Carbon::now()]);
+       if($client){
+            $weeks = Week::where(['status'=>'active'])->get();
+            for($i=0; $i <= 7; $i++){
+                foreach($weeks as $week){
+                  AppointSechdule::create([
+                    'client_id' => $client->id,
+                    'day'       => $week->day,
+                  ]);
+                }
+            }
+       }
+        return redirect()->route('admin-clients.edit', $client->id);
 
     }
 
@@ -60,10 +79,44 @@ class AdminClientController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    {
-        $client = Client::findOrFail($id);
+    {   
+        $services = Service::where('status','active')->latest()->get();
+        $client = Client::with('note')->findOrFail($id);
         $days = Week::where('status','active')->get();
-        return view('admin.pages.client.edit', compact('client','days'));
+        $appSchedules = AppointSechdule::where('client_id', $client->id)->latest()->get()->groupBy('day'); 
+        return view('admin.pages.client.edit', compact('client','days','services','appSchedules'));
+    }
+
+    public function appointment(Request $request){
+       $client = Client::findOrFail($request->client_id);
+       if($request->isMethod('post')){
+                $request->validate([
+                    'day' => 'required',
+                    'start_time' => 'required|array|min:1',
+                    'out_time'  => 'required'
+                ]);
+                $schedules = AppointSechdule::where(['client_id'=>$client->id,'day'=>$request->day])->get();
+                $itemDestroy = $this->itemDestroy($schedules);
+                $scheduleIds = [];
+                foreach($request->start_time as $startTime){
+                    $newSchedule =  AppointSechdule::create([
+                                            'client_id' => $client->id,
+                                            'day'       => $request->day,
+                                            'start_time' => $startTime
+                                        ]);
+                    $scheduleIds[] = $newSchedule->id;
+                }
+                foreach($scheduleIds as $index => $sche_id){
+                    foreach($request->out_time as $key=>$outTime){
+                        if($index == $key){
+                            $scheduleUpdate = AppointSechdule::find($sche_id)->update([
+                                'out_time' => $outTime
+                            ]);
+                        }
+                    }
+                }
+       }
+       return redirect()->route('admin-clients.edit', $client->id)->withMessage('Appointment Scheduled.');
     }
 
     /**
@@ -88,5 +141,39 @@ class AdminClientController extends Controller
        ]);
 
        return back()->withMessage('Status updated!');
+    }
+
+    public function itemDestroy($schedules){
+        foreach($schedules as $schedule){
+            $ava = AppointSechdule::find($schedule->id);
+            $ava->delete();
+        }
+    }
+
+    public function note(Request $request){
+        $request->validate([
+            'note'=> 'required|string'
+        ]);
+        $note = Note::where('client_id', $request->client_id)->first();
+        if($note){
+            $note->update([
+                'note'     => $request->note
+            ]);
+        }else{
+            Note::create([
+                'client_id' => $request->client_id,
+                'note'     => $request->note
+            ]);
+        }
+        return back()->withMessage('Note Saved.');
+    }
+
+    public function clientFilter(Request $request){
+        $clients = Client::where('name','LIKE','%'.$request->query('searchKeyword').'%')
+                         ->orWhere('email','LIKE','%'.$request->query('searchKeyword').'%')
+                         ->orWhere('zip_code','LIKE','%'.$request->query('searchKeyword').'%')
+                         ->latest()
+                         ->get();
+        return view('admin.pages.client.append.append_list',compact('clients'));
     }
 }
