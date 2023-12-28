@@ -35,6 +35,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::match(['get','post'],'admin-employee-avibility-employee/{employee}',[AdminEmployeeController::class,'createAvibilityEmployee'])->name('admin.create_avibility_employee');
     Route::get('admin-employee-filter',[AdminEmployeeController::class,'employeeFilter'])->name('admin.employeeFilter');
     Route::get('/admin-employee-status',[AdminEmployeeController::class, 'adminEmployeeStatus'])->name('admin.employeeStatus');
+    Route::post('/admin-client-assign',[AdminEmployeeController::class,'clientAssign'])->name('admin.clientAssign');
     Route::resource('admin-clients', AdminClientController::class);
     Route::resource('admin-distances', AdminDistanceFinderController::class);
     Route::resource('admin-calanders', AdminCalanderController::class);
@@ -51,6 +52,7 @@ Route::group(['middleware' => 'admin'], function () {
 
     // ajax
     Route::get('day-wise-slot',[AdminEmployeeController::class,'dayWiseSlot'])->name('admin.dayWiseSloat');
+    Route::get('time-wise-clients',[AdminEmployeeController::class,'timeWiseClient'])->name('admin.timeWiseClient');
 });
 
 Route::match(['get','post'],'/employee/login',[EmployeeController::class,'login'])->name('employee.login');

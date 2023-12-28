@@ -133,89 +133,108 @@
                             <div class="col-md-8 f10 mt-1 media-quary-width-60">Changes to slots are pending employee approval.
                             </div>
                         </div>
-                        <div class="col-md-11 mt-3">Clients assigned</div>
-                        <div class="col-md-10 row">
-                            <div class="col-md-4 media-quary-width-100 ">
-                                <div class="row mt-4 bgw-br15 employee-client-card-custom">
-                                  <div class="col-md-3 media-quary-width-30 p-2">
-                                    <img src="{{ asset('/storage/admin/assets/image/Mask2.png') }}" class="section-1-img" alt="">
-                                  </div>
-                                  <div class="col-md-6 media-quary-width-50 pt-2 pb-2 ml-3 ">
-                                    <small class="">H. Fallinsto</small>
-                                    <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                                    <div class="">
-                                      <img src="{{ asset('/storage/admin/assets/image/Icon.png') }}" class="section-2-icon" alt="">
-                                      <span class="custom-paragraph-color f10" >Menefe, CA</span>
-                                    </div>
-                                  </div>
-                                  <div class="col-md-1 media-quary-width-10 employee-client-card-custom">
-                                    <input type="checkbox">
-                                  </div>
+
+
+
+                        <div class="collapse" id="collapseExample">
+                            <div class="row d-flex justify-content-end">
+                                <div class="col-8">
+                                         <div class="card card-body">
+                                            <h6>Client Assign</h6>
+                                            <form action="{{ route('admin.clientAssign') }}" method="post">
+                                                @csrf
+                                                <div class="row d-flex justify-content-between">
+                                                    <div class="col-sm-10">
+                                                        <select class="js-example-basic-single" name="client_id" required>
+                                                            <option value="">Select Clients</option>
+                                                            @foreach ($clientsAll as $client)
+                                                                <option value="{{ $client->id }}">{{ $client->name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <input type="hidden" name="employee_id" value="{{ $employee->id }}">
+                                                    <div class="col-sm-2">
+                                                        <button type="submit" class="btn btn-sm btn-primary">Assign</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <div class="separator mt-4">or</div>
+                                            <div class="row d-flex justify-content-between mt-0">
+                                                <h6>Filter</h6>
+                                                <div class="col-sm-6">
+                                                    <select class="js-example-basic-single select-day" name="state" required>
+                                                        <option value="">Select Day</option>
+                                                        @foreach ($weeks as $week)
+                                                            <option value="{{ $week->day }}">{{ $week->day }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <select class="js-example-basic-single append-time-slots selete-time-slot" name="" required>
+                                                        <option value="">Select Time</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <form action="{{ route('admin.clientAssign') }}" method="post">
+                                                @csrf
+                                                <div class="row d-flex justify-content-between mt-3">
+                                                    <div class="col-sm-12">
+                                                        <select class="js-example-basic-single append-fliter-clients" name="client_id" required>
+                                                            <option value="">Select Client</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" name="employee_id" value="{{ $employee->id }}">
+                                                <div class="row d-flex justify-content-center mt-3">
+                                                    <div class="col-sm-3">
+                                                        <button type="submit" class="btn btn-sm btn-primary w-100">Assign</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+
+
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-md-11 mt-3">Clients assigned</div>
+                        <div class="col-md-10 row">
+                            @foreach ($assignClients as $assignClient)
+                                <div class="col-md-4 media-quary-width-100 ">
+                                    <div class="row mt-4 bgw-br15 employee-client-card-custom">
+                                    <div class="col-md-3 media-quary-width-30 p-2">
+                                        <img src="{{ asset('/storage/admin/assets/image/Mask2.png') }}" class="section-1-img" alt="">
+                                    </div>
+                                    <div class="col-md-6 media-quary-width-50 pt-2 pb-2 ml-3 ">
+                                        <small style="font-size:12px;">{{ $assignClient->client_assign ? $assignClient->client_assign->name : '-' }}</small>
+                                        <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
+                                        <div class="">
+                                            <img src="{{ asset('/storage/admin/assets/image/Icon.png') }}" class="section-2-icon" alt="">
+                                            <span class="" style="font-size:8px;">{{ $assignClient->client_assign->street  }}</span>
+                                            <span class="" style="font-size:8px;">{{ $assignClient->client_assign->appartment  }}</span>
+                                            <span class="" style="font-size:8px;">{{ $assignClient->client_assign->city  }}</span>
+                                            <span class="" style="font-size:8px;">{{ $assignClient->client_assign->state  }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 media-quary-width-10 employee-client-card-custom">
+                                        <input type="checkbox">
+                                    </div>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        </div>
                         <div class="col-md-2">
+
                             <div class="col-md-12 empoyee-view-drop-drag-section mt-4 d-flex justify-content-center align-items-center">
+
                                 <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                                     +
                                 </a>
                             </div>
 
                         </div>
-                        <div class="collapse" id="collapseExample">
-                            <div class="row d-flex justify-content-end">
-                                <div class="col-8">
-                                    <div class="card card-body">
-                                        <h6>Client Assign</h6>
-                                        <div class="row d-flex justify-content-between">
-                                            <div class="col-sm-10">
-                                                <select class="js-example-basic-single" name="client_id">
-                                                    <option value="AL">Select Clients</option>
-                                                    @foreach ($clientsAll as $client)
-                                                        <option value="{{ $client->id }}">{{ $client->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="col-sm-2">
-                                                <button class="btn btn-sm btn-primary">Assign</button>
-                                            </div>
-                                        </div>
-                                        <div class="separator mt-4">or</div>
-                                        <div class="row d-flex justify-content-between mt-0">
-                                            <h6>Filter</h6>
-                                            <div class="col-sm-6">
-                                                <select class="js-example-basic-single select-day" name="state">
-                                                    <option value="">Select Day</option>
-                                                    @foreach ($weeks as $week)
-                                                        <option value="{{ $week->day }}">{{ $week->day }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <select class="js-example-basic-single append-time-slot" name="state">
-
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="row d-flex justify-content-between mt-3">
-                                            <div class="col-sm-12">
-                                                <select class="js-example-basic-single" name="state">
-                                                    <option value="AL">Alabama</option>
-                                                      ...
-                                                    <option value="WY">Wyoming</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="row d-flex justify-content-center mt-3">
-                                            <div class="col-sm-3">
-                                                <button class="btn btn-sm btn-primary w-100">Assign</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                     <div class="d-flex justify-content-center mt-5">
                         <a href="{{ route('admin-employees.index') }}" class="btn btn-sm btn-info">Finish -> go to employee lists</a>
@@ -246,7 +265,28 @@
                     day: day
                 },
                 success: function(response) {
+                    $('.append-time-slots').empty().append("<option value=''>Select Time</option>");
+                    $.each(response, function(index, item) {
+                        $('.append-time-slots').append('<option value="' + item.id + '">' + item.start_time + ' - '+ item.out_time +'</option>');
+                    });
+                },
+                error: function(response) {
                     console.log(response);
+                }
+            });
+        });
+
+        $('.selete-time-slot').on('change', function() {
+            var slotId = this.value;
+
+            $.ajax({
+                method: "get",
+                url: '{{ route("admin.timeWiseClient") }}',
+                data: {
+                    slotId: slotId
+                },
+                success: function(response) {
+                    $('.append-fliter-clients').empty().append('<option value="' + response.id + '">' + response.name +'</option>');
                 },
                 error: function(response) {
                     console.log(response);

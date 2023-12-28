@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AppointSechdule;
 use App\Models\AvailityEmployee;
 use App\Models\Client;
+use App\Models\ClientAssign;
 use App\Models\Employee;
 use App\Models\User;
 use App\Models\Week;
@@ -118,7 +119,9 @@ class AdminEmployeeController extends Controller
         $avaEmps = AvailityEmployee::where(['employee_id'=>$id])->latest()->get()->groupBy('day');
         $clientsAll = Client::where('status','active')->get();
         $weeks = Week::where(['status'=>'active'])->get();
-        return view('admin.pages.employee.create_avibility_employee',compact('employee','avaEmps','clientsAll','weeks'));
+        $assignClients = ClientAssign::with('client_assign')->where(['status'=>'pending','employee_id'=>$id])->get();
+
+        return view('admin.pages.employee.create_avibility_employee',compact('employee','avaEmps','clientsAll','weeks','assignClients'));
     }
 
     public function adminEmployeeStatus(Request $request){
@@ -144,7 +147,24 @@ class AdminEmployeeController extends Controller
         }
     }
     public function dayWiseSlot(Request $request){
-        $appSechdule = AppointSechdule::where(['day'=>$request->query('day')])->whereNotNull('start_time')->get()->unique('start_time');
+        $appSechdule = AppointSechdule::where(['day'=>$request->query('day')])->whereNotNull('start_time')->get();
         return $appSechdule;
+    }
+    public function timeWiseClient(Request $request){
+        $sechdule = AppointSechdule::with('client')->find($request->query('slotId'));
+        return $sechdule->client;
+    }
+
+    public function clientAssign(Request $request){
+        $assignCheck = ClientAssign::where(['employee_id'=>$request->employee_id,'client_id'=>$request->client_id,'status'=>'pending'])->first();
+        if($assignCheck){
+            return redirect()->route('admin.create_avibility_employee',$request->employee_id)->with('error','Already Assign');
+        }else{
+            $clientAssign = new ClientAssign;
+            $clientAssign->employee_id = $request->employee_id;
+            $clientAssign->client_id = $request->client_id;
+            $clientAssign->save();
+        }
+        return redirect()->route('admin.create_avibility_employee',$request->employee_id)->with('message','Client Assign Successfully');
     }
 }
