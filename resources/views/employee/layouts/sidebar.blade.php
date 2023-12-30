@@ -24,7 +24,7 @@
           </div>
         </a>
 
-        <a href="employee_view_expand.html" class="link-text-color-nav">
+        <a href="{{ route('employee.profile') }}" class="link-text-color-nav">
           <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
             <i class="fas fa-lock fa-fw me-3 p-2"></i>
             <div class="p-2">My Profile</div>
