@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Client;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class AdminDistanceFinderController extends Controller
@@ -11,8 +13,10 @@ class AdminDistanceFinderController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view('admin.pages.distance_finder.lists');
+    {   
+        $employees = Employee::where('status','active')->get();
+        $clients = Client::where('status','active')->get();
+        return view('admin.pages.distance_finder.lists',compact('employees','clients'));
     }
 
     /**
