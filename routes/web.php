@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AdminMessageController;
 use App\Http\Controllers\Admin\AdminServiceController;
 use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Employee\EmployeeController;
+use App\Http\Controllers\Employee\EmployeeProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,5 +62,9 @@ Route::group(['middleware' => 'employee'], function () {
         Route::get('employee-dashboard', 'dashboard')->name('employee.dashboard');
         Route::get('employee-home', 'home')->name('employee.home');
         Route::get('employee-logout','logout')->name('employee.logout');
+    });
+
+    Route::controller(EmployeeProfileController::class)->group(function(){
+        Route::match(['get','post'],'/employee-profile','employeeProfile')->name('employee.profile');
     });
 });

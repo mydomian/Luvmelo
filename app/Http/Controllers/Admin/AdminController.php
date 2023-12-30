@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Client;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -22,8 +23,13 @@ class AdminController extends Controller
         }
         return view('admin.pages.login');
     }
-    public function dashboard(){
-        return view('admin.pages.dashboard');
+    public function dashboard(Request $request){
+        $employees = Employee::where(['status'=>'active'])->latest()->get();
+        $clients = Client::with('service')->where(['status'=>'active'])->latest()->get();
+        if($request->query('filter')){
+            $employees = Employee::where(['status'=>'active'])->orderBy('id',$request->query('filter'))->get();
+        }
+        return view('admin.pages.dashboard',compact('employees','clients'));
     }
     public function logout(){
         Auth::logout();

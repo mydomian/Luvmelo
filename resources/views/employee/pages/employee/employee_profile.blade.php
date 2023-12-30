@@ -1,6 +1,5 @@
-@extends('admin.layouts.master')
-@push('admin-css')
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+@extends('employee.layouts.master')
+@push('employee-css')
     <style>
         input[type="time"] {
             font-size: 11.5px; /* You can also use specific values like '12px', '0.8em', etc. */
@@ -11,44 +10,20 @@
         input[type="time"] {
             text-align: center;
         }
-        .select2{
-            width: 100% !important;
-        }
-        .select2-container .select2-selection--single {
-            height: 32px;
-        }
-        .select2-container--default .select2-selection--single .select2-selection__arrow {
-            height: 30px;
-        }
-        .separator {
-            display: flex;
-            align-items: center;
-            text-align: center;
-        }
-        .separator::before, .separator::after {
-            content: '';
-            flex: 1;
-            border-bottom: 1px solid #000;
-        }
-        .separator:not(:empty)::before {
-            margin-right: .25em;
-        }
-        .separator:not(:empty)::after {
-            margin-left: .25em;
-        }
         .col-custom-19{
             width: 19%;
             margin-left: -50px;
         }
     </style>
 @endpush
-@section('admin-content')
+@section('employee-content')
 <div class="custom-name-color pt-3 overview-text" >
-    Employee Avaibility Update
-  </div>
+    Employee Edit
+</div>
   <div class="row home-main-section pb-5">
     <div class="col-md-12 mt-3 custom-paragraph-color">
         <div class="card">
+
                 <div class="card-body">
                     <div class="row d-flex justify-content-center">
                         <div class="mt-3 text-dark text-center">General</div>
@@ -135,67 +110,7 @@
                             </div>
                         </div>
 
-                        <div class="collapse" id="collapseExample">
-                            <div class="row d-flex justify-content-end">
-                                <div class="col-8">
-                                         <div class="card card-body">
-                                            <h6>Client Assign</h6>
-                                            <form action="{{ route('admin.clientAssign') }}" method="post">
-                                                @csrf
-                                                <div class="row d-flex justify-content-between">
-                                                    <div class="col-sm-10">
-                                                        <select class="js-example-basic-single" name="client_id" required>
-                                                            <option value="">Select Clients</option>
-                                                            @foreach ($clientsAll as $client)
-                                                                <option value="{{ $client->id }}">{{ $client->name }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                    <input type="hidden" name="employee_id" value="{{ $employee->id }}">
-                                                    <div class="col-sm-2">
-                                                        <button type="submit" class="btn btn-sm btn-primary">Assign</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                            <div class="separator mt-4">or</div>
-                                            <div class="row d-flex justify-content-between mt-0">
-                                                <h6>Filter</h6>
-                                                <div class="col-sm-6">
-                                                    <select class="js-example-basic-single select-day" name="state" required>
-                                                        <option value="">Select Day</option>
-                                                        @foreach ($weeks as $week)
-                                                            <option value="{{ $week->day }}">{{ $week->day }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <select class="js-example-basic-single append-time-slots selete-time-slot" name="" required>
-                                                        <option value="">Select Time</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <form action="{{ route('admin.clientAssign') }}" method="post">
-                                                @csrf
-                                                <div class="row d-flex justify-content-between mt-3">
-                                                    <div class="col-sm-12">
-                                                        <select class="js-example-basic-single append-fliter-clients" name="client_id" required>
-                                                            <option value="">Select Client</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <input type="hidden" name="employee_id" value="{{ $employee->id }}">
-                                                <div class="row d-flex justify-content-center mt-3">
-                                                    <div class="col-sm-3">
-                                                        <button type="submit" class="btn btn-sm btn-primary w-100">Assign</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
 
-
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="col-md-11 mt-3">Clients assigned</div>
                         <div class="col-md-10 row">
@@ -222,17 +137,6 @@
                                     </div>
                                 </div>
                             @endforeach
-
-                        </div>
-                        <div class="col-md-2">
-
-                            <div class="col-md-12 empoyee-view-drop-drag-section mt-4 d-flex justify-content-center align-items-center">
-
-                                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                    +
-                                </a>
-                            </div>
-
                         </div>
                     </div>
                     <div class="d-flex justify-content-center mt-5">
@@ -241,57 +145,6 @@
                 </div>
         </div>
     </div>
-  </div>
-
-
+</div>
 
 @endsection
-
-@push('admin-scripts')
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script>
-       $(document).ready(function() {
-            $('.js-example-basic-single').select2();
-        });
-
-        $('.select-day').on('change', function() {
-            var day = this.value;
-            $.ajax({
-                method: "get",
-                url: '{{ route("admin.dayWiseSloat") }}',
-                data: {
-                    day: day
-                },
-                success: function(response) {
-                    $('.append-time-slots').empty().append("<option value=''>Select Time</option>");
-                    $.each(response, function(index, item) {
-                        $('.append-time-slots').append('<option value="' + item.id + '">' + item.start_time + ' - '+ item.out_time +'</option>');
-                    });
-                },
-                error: function(response) {
-                    console.log(response);
-                }
-            });
-        });
-
-        $('.selete-time-slot').on('change', function() {
-            var slotId = this.value;
-
-            $.ajax({
-                method: "get",
-                url: '{{ route("admin.timeWiseClient") }}',
-                data: {
-                    slotId: slotId
-                },
-                success: function(response) {
-                    $('.append-fliter-clients').empty().append('<option value="' + response.id + '">' + response.name +'</option>');
-                },
-                error: function(response) {
-                    console.log(response);
-                }
-            });
-        });
-
-    </script>
-@endpush

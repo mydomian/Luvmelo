@@ -15,6 +15,7 @@ class Client extends Model
             'service_name' => 'Not selected'
         ]);
     }
+
     public function note(){
         return $this->hasOne(Note::class,'client_id','id');
     }

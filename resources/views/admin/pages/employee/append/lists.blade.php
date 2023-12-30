@@ -1,17 +1,18 @@
 @foreach ($employees as $employee)
-        <tr class="table-tr-border">
-            <td class="custom-paragraph-color">{{ $employee->name }}</td>
-            <td class="custom-number-color">{{ employeeSlotCount($employee->id) }}</td>
-            <td class="custom-paragraph-color">{{ $employee->phone }}</td>
-            <td class="text-primary">{{ $employee->email }}</td>
-            <td class="text-primary">{{ $employee->street }}</td>
-            <td class="text-primary">{{ $employee->appartment }}</td>
-            <td class="text-primary">{{ $employee->city }}</td>
-            <td class="text-primary">{{ $employee->state }}</td>
-            <td class="text-primary">{{ $employee->zip_code }}</td>
-            <td style="width:200px; display:flex; justify-content:center">
-                <a href="{{ route('admin.create_avibility_employee',$employee->id) }}" class="request-button">Edit <i class="fas fa-edit"></i> </a>
-                <button class="request-button ml-2">Request</button>
+        <tr>
+            <td>{{ $employee->name }}</td>
+            <td>{{ employeeSlotCount($employee->id) }}</td>
+            <td>{{ $employee->phone }}</td>
+            <td>{{ $employee->email }}</td>
+            <td>{{ $employee->street }}</td>
+            <td>{{ $employee->appartment }}</td>
+            <td>{{ $employee->city }}</td>
+            <td>{{ $employee->state }}</td>
+            <td>{{ $employee->zip_code }}</td>
+
+            <td class="">
+                <a href="{{ route('admin.create_avibility_employee',$employee->id) }}" class="btn btn-sm btn-info">Edit <i class="fas fa-edit"></i> </a>
+                <button class="btn btn-sm btn-info mt-2">Request</button>
             </td>
         </tr>
 
