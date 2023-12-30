@@ -10,9 +10,9 @@
             <td>{{ $employee->state }}</td>
             <td>{{ $employee->zip_code }}</td>
 
-            <td style="display:flex; justify-content-between">
+            <td class="">
                 <a href="{{ route('admin.create_avibility_employee',$employee->id) }}" class="btn btn-sm btn-info">Edit <i class="fas fa-edit"></i> </a>
-                <button class="btn btn-sm btn-info ml-2">Request</button>
+                <button class="btn btn-sm btn-info mt-2">Request</button>
             </td>
         </tr>
 
