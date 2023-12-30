@@ -10,6 +10,10 @@
         input[type="time"] {
             text-align: center;
         }
+        .col-custom-19{
+            width: 19%;
+            margin-left: -50px;
+        }
     </style>
 @endpush
 @section('employee-content')
@@ -55,27 +59,28 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-5">
-                        <div class="d-flex justify-content-between">
-                            <div class="text-dark">Availability <span class="text-warning">(Add 10 sessions total)</span></div>
-                            <div>
-                                @if ($employee->status == 'active')
-                                    <a href="{{ route('admin.employeeStatus',['employee'=>$employee->id,'status'=>'inactive']) }}" class="btn btn-sm btn-danger">Inactive</a>
-                                @else
-                                    <a href="{{ route('admin.employeeStatus',['employee'=>$employee->id,'status'=>'active']) }}" class="btn btn-sm btn-success">Active</a>
-                                @endif
-                            </div>
+                    <div class="d-flex justify-content-between mt-5">
+                        <div class="text-dark">Availability <span class="text-warning">(Add 10 sessions total)</span></div>
+                        <div>
+                            @if ($employee->status == 'active')
+                                <a href="{{ route('admin.employeeStatus',['employee'=>$employee->id,'status'=>'inactive']) }}" class="btn btn-sm btn-danger">Inactive</a>
+                            @else
+                                <a href="{{ route('admin.employeeStatus',['employee'=>$employee->id,'status'=>'active']) }}" class="btn btn-sm btn-success">Active</a>
+                            @endif
                         </div>
+                    </div>
+                    <div class="row d-flex justify-content-between ml-4">
+
                         @foreach ($avaEmps as $key=>$avaEmp)
 
-                            <div class="col-custom-14 row  mt-3">
-                                <form action="{{ route('employee.profile') }}" method="post">
+                            <div class="col-custom-19 row  mt-3">
+                                <form action="{{ route('admin.create_avibility_employee',$employee->id) }}" method="post">
                                     @csrf
                                     <div class="form-group form-check ">
                                         <input type="checkbox" name="day" class="form-check-input" @if(dayCheck($employee->id, $key) == 'check') checked @endif value="{{ $key }}" id="{{ $key }}">
                                         <label class="form-check-label" style="font-size:13px;" for="{{ $key }}">{{ $key }}</label>
                                     </div>
-                                    <div class="col-md-12 row employee-details-by-day mt-1  ">
+                                    <div class="col-md-12 row employee-details-by-day mt-1" style="padding-right:8px">
                                         <div class="col-md-12 m-1 row mp0 text-center">
                                             <div class="col-md-6 f10 media-quary-width-40">Start</div>
                                             <div class="col-md-6 f10 media-quary-width-40 media-margin-left-4">End</div>

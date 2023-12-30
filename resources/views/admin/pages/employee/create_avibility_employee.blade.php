@@ -25,17 +25,14 @@
             align-items: center;
             text-align: center;
         }
-
         .separator::before, .separator::after {
             content: '';
             flex: 1;
             border-bottom: 1px solid #000;
         }
-
         .separator:not(:empty)::before {
             margin-right: .25em;
         }
-
         .separator:not(:empty)::after {
             margin-left: .25em;
         }
@@ -52,7 +49,6 @@
   <div class="row home-main-section pb-5">
     <div class="col-md-12 mt-3 custom-paragraph-color">
         <div class="card">
-
                 <div class="card-body">
                     <div class="row d-flex justify-content-center">
                         <div class="mt-3 text-dark text-center">General</div>
@@ -109,7 +105,7 @@
                                         <input type="checkbox" name="day" class="form-check-input" @if(dayCheck($employee->id, $key) == 'check') checked @endif value="{{ $key }}" id="{{ $key }}">
                                         <label class="form-check-label" style="font-size:13px;" for="{{ $key }}">{{ $key }}</label>
                                     </div>
-                                    <div class="col-md-12 row employee-details-by-day mt-1">
+                                    <div class="col-md-12 row employee-details-by-day mt-1" style="padding-right:8px">
                                         <div class="col-md-12 m-1 row mp0 text-center">
                                             <div class="col-md-6 f10 media-quary-width-40">Start</div>
                                             <div class="col-md-6 f10 media-quary-width-40 media-margin-left-4">End</div>
@@ -138,8 +134,6 @@
                             <div class="col-md-8 f10 mt-1 media-quary-width-60">Changes to slots are pending employee approval.
                             </div>
                         </div>
-
-
 
                         <div class="collapse" id="collapseExample">
                             <div class="row d-flex justify-content-end">
