@@ -16,6 +16,7 @@
             pointer-events: none;
             color: #aaa;
         }
+
     </style>
 @endpush
 
@@ -106,25 +107,14 @@
             <input type="text sm"  name="search_keyword"  class="employee-search-keyword" placeholder="Search by name / email / zipcode">
         </div>
       </div>
-        {{-- <div class="row d-flex justify-content-center">
-            <div class="col-sm-12 col-md-6 mb-2">
-                <div class="form-group has-search">
-                    <span class="fa fa-search form-control-feedback"></span>
-                    <input type="text" name="search_keyword" class="form-control employee-search-keyword" placeholder="Search by name / email / zipcode">
-                </div>
-            </div>
-        </div> --}}
+
         <div class="d-flex justify-content-between col-md-11 mt-3 media-quary-width-88">
             <div>
                 Employee List ({{ $employees->count() }})
             </div>
             <div>
-
                 <a href="{{ route('admin-employees.create') }}" class="btn btn-sm btn-info" style="margin-top:-5px;">Add Employee</a>
-
             </div>
-
-
         </div>
 
         <div class="col-md-1  mt-3 dropdown media-quary-width-5">
@@ -152,25 +142,28 @@
             </ul>
 
         </div>
-        <table class="table table-borderless align-items-center mt-3">
-          <thead class="table-thead-color">
-            <tr>
-              <th>Name </th>
-              <th>Slots</th>
-              <th>Phone</th>
-              <th>Email</th>
-              <th>Street</th>
-              <th>Apt</th>
-              <th>City</th>
-              <th>State</th>
-              <th>Zipcode</th>
-              <th>Client</th>
-            </tr>
-          </thead>
-          <tbody class="append_lists">
-            @include('admin.pages.employee.append.lists')
-          </tbody>
-        </table>
+
+        <div class="table-responsive mt-4">
+            <table class="table">
+            <thead>
+              <tr style="background: #EAF2FF">
+                <th style="width:100px">Name </th>
+                <th style="">Slots</th>
+                <th style="">Phone</th>
+                <th style="">Email</th>
+                <th style="">Street</th>
+                <th style="">Apt</th>
+                <th style="">City</th>
+                <th style="">State</th>
+                <th style="">Zipcode</th>
+                <th style="">Client</th>
+              </tr>
+            </thead>
+            <tbody class="append_lists">
+                @include('admin.pages.employee.append.lists')
+            </tbody>
+          </table>
+          </div>
 
       </div>
 
