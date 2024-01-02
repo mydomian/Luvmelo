@@ -2,6 +2,7 @@
 
 use App\Models\AppointSechdule;
 use App\Models\AvailityEmployee;
+use App\Models\Settings;
 
 function Emp($employeeId){
     return  $ava = AvailityEmployee::where(['employee_id'=>$employeeId]);
@@ -31,4 +32,8 @@ function scheduleCheck($client_id, $day){
     }else{
         return false;
     }
+}
+
+function settings(){
+    return Settings::first();
 }

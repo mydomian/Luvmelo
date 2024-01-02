@@ -19,9 +19,9 @@ class AdminClientController extends Controller
     public function index(Request $request)
     {   
         $services = Service::where('status','active')->latest()->get();
-        $clients = Client::with('service')->where('status','active')->latest()->get();
+        $clients = Client::with('service')->latest()->get();
         if($request->query('filter')){
-            $clients = Client::where('status')->orderBy('id',$request->query('filter'))->get();
+            $clients = Client::orderBy('id',$request->query('filter'))->get();
         }
         return view('admin.pages.client.lists', compact('clients','services'));
     }
