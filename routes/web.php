@@ -47,6 +47,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/service/status/update',[AdminServiceController::class,'status'])->name('service.status.update');
     Route::get('/client/status/update',[AdminClientController::class,'status'])->name('admin-clients.status');
     Route::get('/client/filter',[AdminClientController::class,'clientFilter'])->name('admin.client.filter');
+    Route::get('/employee-client/search',[AdminDistanceFinderController::class,'employeeClientSearch'])->name('admin.employee.client.search');
     Route::post('/client/notes',[AdminClientController::class,'note'])->name('admin-clients.note');
     Route::match(['get','post'],'/client/appointment/update',[AdminClientController::class,'appointment'])->name('admin-clients.appointment');
 

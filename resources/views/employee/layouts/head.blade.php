@@ -1,6 +1,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Employee</title>
+<title>{{settings()->name}}</title>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <!-- Font Awesome -->
@@ -10,5 +10,9 @@
 <!-- MDB -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet"/>
 <link rel="stylesheet" href="{{ asset('/storage/employee/assets/main.css') }}">
+
+<!-- Favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="{{asset('storage/logo')}}/{{settings()->favicon}}
+
 @stack('employee-css')
 

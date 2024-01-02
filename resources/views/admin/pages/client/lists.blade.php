@@ -149,32 +149,32 @@
         </div>
         <div class="col-md-3 p-4 m-3 client-compare-window text-center media-quary-width-97">
             <div class="text-center text-white h5">Compare Window</div>
-            <div class="row bgw-br15 client-right-card-custom  mt-4 ">
+            <div class="row bgw-br15 client-right-card-custom  mt-4">
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-3 ml-2 mt-2 media-quary-width-30">
-                            <img src="assets/image/Logo.png" class="right-section-1-img" alt="">
+                            <img src="{{asset('storage/admin/assets/image/Logo.png')}}" class="right-section-1-img" alt="">
                         </div>
                         <div class="col-md-7 p-2 media-quary-width-60">
                             <div class="row">
                                 <div class="col-md-10 media-quary-width-80"><small class="">H. Fallinsto</small>
                                 </div>
                                 <div class="col-md-1 media-quary-width-10 "><img
-                                        src="assets/image/icon/Component_icon_ic_Ch.png" alt=""></div>
+                                        src="{{asset('storage/admin/assets/image/icon/Component_icon_ic_Ch.png')}}" alt=""></div>
                             </div>
                             <div class="">
-                                <img src="assets/image/icon/ic_More Copy.png" class="right-section-2-icon "
+                                <img src="{{asset('storage/admin/assets/image/icon/ic_More Copy.png')}}" class="right-section-2-icon "
                                     alt="">
                                 <span class=" f10">Thu, 23 Jun</span>
                                 <span class="custom-paragraph-color f10"> </span>
-                                <img src="assets/image/icon/Oval.png" class="right-section-3-icon" alt="">
+                                <img src="{{asset('storage/admin/assets/image/icon/Oval.png')}}" class="right-section-3-icon" alt="">
                                 <span class="custom-paragraph-color f10">02:00 - 03:00 PM</span>
                             </div>
                         </div>
                     </div>
                     <div class="row client-right-section-div mt-3 ml-1">
                         <div class="col-md-1 media-quary-width-5 media-margin-top-1">
-                            <img src="assets/image/icon/ic_More Copy 2.png" class="right-section-2-icon" alt="">
+                            <img src="{{asset('storage/admin/assets/image/icon/ic_More Copy 2.png')}}" class="right-section-2-icon" alt="">
                         </div>
                         <div class="col-md-10 media-quary-width-90">
                             <p class="custom-paragraph-color f10 client-link-text p-1 ">https://google.maps/address/12345

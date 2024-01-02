@@ -3,7 +3,7 @@
     <div class="position-sticky">
 
       <div class="display-flex-center-content">
-        <img class="px-3" src="{{ asset('/storage/admin/assets/image/temp_logo_luvmelo_co.png') }}" alt="">
+        <img class="px-3" src="{{ asset('/storage/logo') }}/{{settings()->logo}}" alt="">
 
         <button class=" navbar-toggler btn-nav-toggoler-hide-sidebar" type="button" onclick="toggleSidebar()">
           <i class="fas fa-bars"></i>

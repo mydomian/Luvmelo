@@ -9,7 +9,7 @@
       <!-- Sidebar -->
     @include('admin.layouts.header')
   </header>
-  <main>
+  <main id="@yield('bgimage')">
     <div>
         @yield('admin-content')
     </div>
