@@ -33,122 +33,23 @@
             </div>
           </div>
              <div class="col-md-12 px-3 employee-dashboard-card-section-overflow pb-4">
-
-                <div class="row employee-dashboard-card-section-active">
-                    <div class="col-md-12 row p-3">
-                        <div class="col-md-3 media-quary-width-25">
-                            <img src="{{ asset('/storage/employee/assets/image/Mask.png') }}" alt="">
-                          </div>
-                          <div class="col-md-6 media-quary-width-60 ml-3 ">
-                            <small class="">S. Good</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                          </div>
-                          <div class="col-md-1 media-quary-width-10 right-border-employee-dashboard"></div>
-                    </div>
-                    <small class="f11 p-2 pb-3 pl-3">
-                        Wiseman family can only meet after lunch time. Must have at least 2 sessions per month.
-
-                    </small>
-                </div>
-
-                <div class="row mt-4 employee-dashboard-card-section">
-                    <div class="col-md-12 row p-3">
-                        <div class="col-md-3 media-quary-width-25">
-                            <img src="{{ asset('/storage/employee/assets/image/Mask.png') }}" alt="">
-                          </div>
-                          <div class="col-md-6 ml-3  media-quary-width-60">
-                            <small class="">S. Good</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                          </div>
-                          <div class="col-md-1 media-quary-width-10 right-border-employee-dashboard"></div>
-                    </div>
-                    <small class="f11 p-2 pb-3 pl-3">
-                        Wiseman family can only meet after lunch time. Must have at least 2 sessions per month.
-
-                    </small>
-                </div>
-
-                <div class="row mt-4 employee-dashboard-card-section">
-                    <div class="col-md-12 row p-3">
-                        <div class="col-md-3 media-quary-width-25">
-                            <img src="{{ asset('/storage/employee/assets/image/Mask.png') }}" alt="">
-                          </div>
-                          <div class="col-md-6 ml-3  media-quary-width-60">
-                            <small class="">S. Good</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                          </div>
-                          <div class="col-md-1 media-quary-width-10 right-border-employee-dashboard"></div>
-                    </div>
-                    <small class="f11 p-2 pb-3 pl-3">
-                        Wiseman family can only meet after lunch time. Must have at least 2 sessions per month.
-
-                    </small>
-                </div>
-
-                <div class="row mt-4 employee-dashboard-card-section">
-                    <div class="col-md-12 row p-3">
-                        <div class="col-md-3 media-quary-width-25">
-                            <img src="{{ asset('/storage/employee/assets/image/Mask.png') }}" alt="">
-                          </div>
-                          <div class="col-md-6 ml-3  media-quary-width-60">
-                            <small class="">S. Good</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                          </div>
-                          <div class="col-md-1 media-quary-width-10 right-border-employee-dashboard"></div>
-                    </div>
-                    <small class="f11 p-2 pb-3 pl-3">
-                        Wiseman family can only meet after lunch time. Must have at least 2 sessions per month.
-
-                    </small>
-                </div>
-                <div class="row mt-4 employee-dashboard-card-section">
-                  <div class="col-md-12 row p-3">
-                      <div class="col-md-3 media-quary-width-25">
-                          <img src="{{ asset('/storage/employee/assets/image/Mask.png') }}" alt="">
+                @foreach ($clients as $client)
+                    <div class="row employee-dashboard-card-section-active">
+                        <div class="col-md-12 row p-3">
+                            <div class="col-md-3 media-quary-width-25">
+                                <img src="{{ asset('/storage/employee/assets/image/Mask.png') }}" alt="">
+                            </div>
+                            <div class="col-md-6 media-quary-width-60 ml-3 ">
+                                <small class="">{{ $client->client_assign->name }}</small>
+                                <div class="custom-paragraph-color display-6 f11">{{ $client->client_assign->service->service_name }}</div>
+                            </div>
+                            <div class="col-md-1 media-quary-width-10 right-border-employee-dashboard"></div>
                         </div>
-                        <div class="col-md-6 ml-3  media-quary-width-60">
-                          <small class="">S. Good</small>
-                          <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                        </div>
-                        <div class="col-md-1 media-quary-width-10 right-border-employee-dashboard"></div>
-                  </div>
-                  <small class="f11 p-2 pb-3 pl-3">
-                      Wiseman family can only meet after lunch time. Must have at least 2 sessions per month.
-
-                  </small>
-              </div>
-               <div class="row mt-4 employee-dashboard-card-section">
-                    <div class="col-md-12 row p-3">
-                        <div class="col-md-3 media-quary-width-25">
-                            <img src="{{ asset('/storage/employee/assets/image/Mask.png') }}" alt="">
-                          </div>
-                          <div class="col-md-6 ml-3  media-quary-width-60">
-                            <small class="">S. Good</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                          </div>
-                          <div class="col-md-1 media-quary-width-10 right-border-employee-dashboard"></div>
+                        <small class="f11 p-2 pb-3 pl-3">
+                            Wiseman family can only meet after lunch time. Must have at least 2 sessions per month.
+                        </small>
                     </div>
-                    <small class="f11 p-2 pb-3 pl-3">
-                        Wiseman family can only meet after lunch time. Must have at least 2 sessions per month.
-
-                    </small>
-                </div>
-               <div class="row mt-4 employee-dashboard-card-section">
-                    <div class="col-md-12 row p-3">
-                        <div class="col-md-3 media-quary-width-25">
-                            <img src="{{ asset('/storage/employee/assets/image/Mask.png') }}" alt="">
-                          </div>
-                          <div class="col-md-6 ml-3  media-quary-width-60">
-                            <small class="">S. Good</small>
-                            <div class="custom-paragraph-color display-6 f11">Speech Pathology</div>
-                          </div>
-                          <div class="col-md-1 media-quary-width-10 right-border-employee-dashboard"></div>
-                    </div>
-                    <small class="f11 p-2 pb-3 pl-3">
-                        Wiseman family can only meet after lunch time. Must have at least 2 sessions per month.
-
-                    </small>
-                </div>
+                @endforeach
              </div>
         </div>
         <div class="col-md-8 media-margin-left-12 media-margin-top-10 mb-3">

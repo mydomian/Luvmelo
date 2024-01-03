@@ -9,6 +9,6 @@ class ClientAssign extends Model
 {
     use HasFactory;
     public function client_assign(){
-        return $this->belongsTo(Client::class,'client_id');
+        return $this->belongsTo(Client::class,'client_id')->with('service');
     }
 }
