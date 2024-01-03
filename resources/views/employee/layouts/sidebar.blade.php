@@ -31,7 +31,7 @@
           </div>
         </a>
 
-        <a href="client_list_compare.html" class="link-text-color-nav">
+        <a href="{{ route('employee.myClient') }}" class="link-text-color-nav">
           <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
             <i class="fas fa-chart-line fa-fw me-3 p-2"></i>
             <div class="p-2">My Clients</div>

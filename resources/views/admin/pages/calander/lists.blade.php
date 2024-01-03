@@ -11,7 +11,7 @@
     <div class="col-md-7 home-first-section">
         <div class="row home-first-sectio-row bgw-br15 ">
           <div class="col-md-2  media-quary-width-20">
-            <img src="assets/image/VNU_M472_02.png" class="home-main-section-img " alt="">
+            <img src="{{ asset('/storage/admin/assets/image/VNU_M472_02.png') }}" class="home-main-section-img " alt="">
           </div>
           <div class="col-md-6 py-2 media-quary-width-50">
             <div class="custom-name-color">Hello Melospeech!</div>
@@ -19,7 +19,7 @@
             </p>
           </div>
           <div class="col-md-4 media-quary-width-30">
-            <img src="assets/image/Clip.png" class="home-main-section-img" alt="">
+            <img src="{{ asset('/storage/admin/assets/image/Clip.png') }}" class="home-main-section-img" alt="">
           </div>
         </div>
     </div>
@@ -72,7 +72,7 @@
               <div class="col-md-8 media-quary-width-70 row">
                 <div class="custom-name-color col-md-12">D. Shea</div>
                   <div class="col-md-1 media-quary-width-10">
-                    <img src="assets/image/icon/clock.png" alt="">
+                    <img src="{{ asset('/storage/admin/assets/image/icon/clock.png') }}" alt="">
                   </div>
                   <small class="col-md-9 media-quary-width-80 f11 mt-1 custom-paragraph-color">Speech Pathology
                   </small>
@@ -99,7 +99,7 @@
               <div class="col-md-8 media-quary-width-70 row">
                 <div class="custom-name-color col-md-12">D. Shea</div>
                   <div class="col-md-1 media-quary-width-10">
-                    <img src="assets/image/icon/clock.png" alt="">
+                    <img src="{{ asset('/storage/admin/assets/image/icon/clock.png') }}" alt="">
                   </div>
                   <small class="col-md-9 media-quary-width-80 f11 mt-1 custom-paragraph-color">Speech Pathology
                   </small>
@@ -129,7 +129,7 @@
               <div class="col-md-8 media-quary-width-70 row">
                 <div class="custom-name-color col-md-12">D. Shea</div>
                   <div class="col-md-1 media-quary-width-10">
-                    <img src="assets/image/icon/clock.png" alt="">
+                    <img src="{{ asset('/storage/admin/assets/image/icon/clock.png') }}" alt="">
                   </div>
                   <small class="col-md-9 media-quary-width-80 f11 mt-1 custom-paragraph-color">Speech Pathology
                   </small>
@@ -156,7 +156,7 @@
               <div class="col-md-8 media-quary-width-70 row">
                 <div class="custom-name-color col-md-12">D. Shea</div>
                   <div class="col-md-1 media-quary-width-10">
-                    <img src="assets/image/icon/clock.png" alt="">
+                    <img src="{{ asset('/storage/admin/assets/image/icon/clock.png') }}" alt="">
                   </div>
                   <small class="col-md-9 media-quary-width-80 f11 mt-1 custom-paragraph-color">Speech Pathology
                   </small>
@@ -184,7 +184,7 @@
               <div class="col-md-8 media-quary-width-70 row">
                 <div class="custom-name-color col-md-12">D. Shea</div>
                   <div class="col-md-1 media-quary-width-10">
-                    <img src="assets/image/icon/clock.png" alt="">
+                    <img src="{{ asset('/storage/admin/assets/image/icon/clock.png') }}" alt="">
                   </div>
                   <small class="col-md-9 media-quary-width-80 f11 mt-1 custom-paragraph-color">Speech Pathology
                   </small>
@@ -211,7 +211,7 @@
               <div class="col-md-8 media-quary-width-70 row">
                 <div class="custom-name-color col-md-12">D. Shea</div>
                   <div class="col-md-1 media-quary-width-10">
-                    <img src="assets/image/icon/clock.png" alt="">
+                    <img src="{{ asset('/storage/admin/assets/image/icon/clock.png') }}" alt="">
                   </div>
                   <small class="col-md-9 media-quary-width-80 f11 mt-1 custom-paragraph-color">Speech Pathology
                   </small>
@@ -241,7 +241,7 @@
               <div class="col-md-8 media-quary-width-70 row">
                 <div class="custom-name-color col-md-12">D. Shea</div>
                   <div class="col-md-1 media-quary-width-10">
-                    <img src="assets/image/icon/clock.png" alt="">
+                    <img src="{{ asset('/storage/admin/assets/image/icon/clock.png') }}" alt="">
                   </div>
                   <small class="col-md-9 media-quary-width-80 f11 mt-1 custom-paragraph-color">Speech Pathology
                   </small>
@@ -268,7 +268,7 @@
               <div class="col-md-8 media-quary-width-70 row">
                 <div class="custom-name-color col-md-12">D. Shea</div>
                   <div class="col-md-1 media-quary-width-10">
-                    <img src="assets/image/icon/clock.png" alt="">
+                    <img src="{{ asset('/storage/admin/assets/image/icon/clock.png') }}" alt="">
                   </div>
                   <small class="col-md-9 media-quary-width-80 f11 mt-1 custom-paragraph-color">Speech Pathology
                   </small>
@@ -296,7 +296,7 @@
               <div class="col-md-8 media-quary-width-70 row">
                 <div class="custom-name-color col-md-12">D. Shea</div>
                   <div class="col-md-1 media-quary-width-10">
-                    <img src="assets/image/icon/clock.png" alt="">
+                    <img src="{{ asset('/storage/admin/assets/image/icon/clock.png') }}" alt="">
                   </div>
                   <small class="col-md-9 media-quary-width-80 f11 mt-1 custom-paragraph-color">Speech Pathology
                   </small>
@@ -323,7 +323,7 @@
               <div class="col-md-8 media-quary-width-70 row">
                 <div class="custom-name-color col-md-12">D. Shea</div>
                   <div class="col-md-1 media-quary-width-10">
-                    <img src="assets/image/icon/clock.png" alt="">
+                    <img src="{{ asset('/storage/admin/assets/image/icon/clock.png') }}" alt="">
                   </div>
                   <small class="col-md-9 media-quary-width-80 f11 mt-1 custom-paragraph-color">Speech Pathology
                   </small>
@@ -353,7 +353,7 @@
               <div class="col-md-8 media-quary-width-70 row">
                 <div class="custom-name-color col-md-12">D. Shea</div>
                   <div class="col-md-1 media-quary-width-10">
-                    <img src="assets/image/icon/clock.png" alt="">
+                    <img src="{{ asset('/storage/admin/assets/image/icon/clock.png') }}" alt="">
                   </div>
                   <small class="col-md-9 media-quary-width-80 f11 mt-1 custom-paragraph-color">Speech Pathology
                   </small>
@@ -380,7 +380,7 @@
               <div class="col-md-8 media-quary-width-70 row">
                 <div class="custom-name-color col-md-12">D. Shea</div>
                   <div class="col-md-1 media-quary-width-10">
-                    <img src="assets/image/icon/clock.png" alt="">
+                    <img src="{{ asset('/storage/admin/assets/image/icon/clock.png') }}" alt="">
                   </div>
                   <small class="col-md-9 media-quary-width-80 f11 mt-1 custom-paragraph-color">Speech Pathology
                   </small>

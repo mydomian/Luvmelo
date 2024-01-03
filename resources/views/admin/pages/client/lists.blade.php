@@ -25,9 +25,9 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="col-md-8 ">
-          
+
             <div class="row client-middle-section-withoutVH bgw-br15 mt-3 p-4">
               <div class="col-md-12 collapse bgw-br15 mt-2 mb-4" id="addClient">
                 <div class="client-card-custom p-2 ">
@@ -51,7 +51,7 @@
                                       <label for="form-label"><small>Phone</small></label>
                                     <div><input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{old('phone' ?? '')}}" placeholder="Phone" required style="border-color:#8F00FF"></div>
                                     </div>
-        
+
                                     <div class="col-md-4 my-2">
                                       <label for="form-label"><small>Email</small></label>
                                     <div><input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{old('email' ?? '')}}" placeholder="Email" required style="border-color:#8F00FF"></div>
@@ -74,7 +74,7 @@
                                       <label for="form-label"><small>State</small></label>
                                     <div><input type="text" class="form-control @error('state') is-invalid @enderror" name="state" value="{{old('state' ?? '')}}" placeholder="State" required style="border-color:#8F00FF"></div>
                                     </div>
-        
+
                                     <div class="col-md-4 my-2">
                                       <label for="form-label"><small>Zipcode</small></label>
                                         <div><input type="text" class="form-control @error('zip_code') is-invalid @enderror" name="zip_code" value="{{old('zip_code' ?? '')}}" placeholder="Zipcode" required style="border-color:#8F00FF"></div>
@@ -89,7 +89,7 @@
                                               @endforeach
                                             </select>
                                           </div>
-                                          
+
                                     </div>
                                     <div class="col-md-12 mt-4">
                                         <button type="submit" class="right-section-button" style="background-color: #8F00FF">Save & Next</button>
@@ -98,7 +98,7 @@
                             </div>
                         </div>
                     </form>
-        
+
                 </div>
                 </div>
               </div>
@@ -113,8 +113,8 @@
                 <div class="col-md-8 mt-3 media-quary-width-88 d-flex align-items-center clientCount">Client List ({{$clients->count()}})</div>
                 <a  class="mt-3 btn  btn-sm rounded-pill col-md-3 text-white" data-toggle="collapse" href="#addClient" role="button" aria-expanded="false" aria-controls="collapseExample" style="background-color: #8F00FF">
                   <i class="fa-solid fa-plus"></i> Add Client
-                </a>   
-            
+                </a>
+
                 <div class="col-md-1 mt-3 media-quary-width-5 dropdown d-flex align-items-center">
                     <!-- Avatar -->
                     <a class="col-md-12 dropdown-toggle d-flex align-items-center hidden-arrow" href="#" role="button"
@@ -133,7 +133,7 @@
                                 @if(request()->query('filter') == 'DESC')<span><img src="{{ asset('/storage/admin/assets/image/Component_icon_ic_Ch.png') }}" alt=""></span>@endif <span class="text-white pl-3">New to Old</span>
                             </a>
                         </li>
-        
+
                         <li>
                             <a class="dropdown-item" href="{{ route('admin-clients.index',['filter'=>'ASC']) }}">
                                 @if(request()->query('filter') == 'ASC')<span><img src="{{ asset('/storage/admin/assets/image/Component_icon_ic_Ch.png') }}" alt=""></span> @endif <span class="text-white pl-3">Old to New</span>
@@ -141,7 +141,7 @@
                         </li>
                     </ul>
                 </div>
-                
+
                <div class="append_list d-flex flex-wrap">
                     @include('admin.pages.client.append.append_list')
                </div>
@@ -221,8 +221,8 @@
         $.ajax({
             url: "{{ route('admin.client.filter') }}",
             method: 'get',
-            data: { 
-                searchKeyword:searchKeyword 
+            data: {
+                searchKeyword:searchKeyword
             },
             success: function(res) {
                 $('.append_list').html(res);

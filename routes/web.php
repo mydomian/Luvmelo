@@ -61,10 +61,15 @@ Route::group(['middleware' => 'employee'], function () {
     Route::controller(EmployeeController::class)->group(function () {
         Route::get('employee-dashboard', 'dashboard')->name('employee.dashboard');
         Route::get('employee-home', 'home')->name('employee.home');
+        Route::get('client-lists','employeeMyClient')->name('employee.myClient');
+
         Route::get('employee-logout','logout')->name('employee.logout');
     });
 
     Route::controller(EmployeeProfileController::class)->group(function(){
         Route::match(['get','post'],'/employee-profile','employeeProfile')->name('employee.profile');
     });
+
+    // ajax
+    Route::get('/client-filter',[EmployeeController::class,'clientFilter'])->name('employee.client.filter');
 });
